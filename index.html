@@ -48,7 +48,7 @@
                 </div>
                 <div class="logo-container">
                     <div class="logo-circle">
-                        <img src="assets/images/logo.jpg" alt="PROMATH Logo" class="logo-image">
+                        <img src="assets/images/logo.png" alt="PROMATH Logo" class="logo-image">
                     </div>
                 </div>
                 <div class="batik-side batik-right">
@@ -145,7 +145,7 @@
                     <div class="footer-brand">
                         <span class="footer-text">PROMATH GUI</span>
                         <div class="footer-logo">
-                            <img src="assets/images/logo.jpg" alt="Logo">
+                            <img src="assets/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -159,53 +159,1095 @@
 
                 <!-- Title + batik deco -->
                 <div class="materi-header">
-                    <h2 class="materi-title" id="galeri-title">BATIK .........</h2>
+                    <h2 class="materi-title" id="galeri-title">Galeri Etnomatematika</h2>
                     <div class="materi-header-deco">
                         <img src="assets/images/batik-decoration.jpg" alt="Dekorasi">
                     </div>
                 </div>
 
-                <!-- Large batik image -->
-                <div class="materi-image-wrap">
-                    <img src="assets/images/batik-geometri-1.jpg" alt="Gambar batik overlay geometri" class="materi-image" id="galeri-image">
-                </div>
+                <!-- Materi Awal Section -->
+                <div class="materi-awal-section">
+                    <div class="materi-awal-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <span>Materi Awal</span>
+                    </div>
 
-                <!-- Penjelasan buttons -->
-                <div class="materi-buttons">
-                    <button class="btn-penjelasan" id="btn-penjelasan-batik">Penjelasan Batik</button>
-                    <button class="btn-penjelasan" id="btn-penjelasan-matematika">Penjelasan Matematika</button>
-                </div>
+                    <!-- Translasi -->
+                    <div class="materi-card" id="materi-translasi">
+                        <div class="materi-card-header">
+                            <div class="materi-card-icon materi-card-icon-orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                    <polyline points="12 5 19 12 12 19"/>
+                                </svg>
+                            </div>
+                            <h3>Translasi <span class="materi-card-sub">(Pergeseran)</span></h3>
+                        </div>
+                        <div class="materi-card-body">
+                            <p>Translasi adalah pergeseran semua titik pada suatu bangun datar sejauh jarak dan arah tertentu tanpa mengubah bentuk, ukuran, maupun orientasi bangun tersebut.</p>
+                            <div class="materi-formula">
+                                <span class="formula-label">Rumus:</span>
+                                Jika titik <strong>P(x, y)</strong> ditranslasikan oleh <strong>T = (a, b)</strong>, maka bayangannya <strong>P'(x + a, y + b)</strong>.
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Penjelasan Batik panel -->
-                <div class="penjelasan-panel hidden" id="panel-batik">
-                    <div class="penjelasan-content">
-                        <h4>Penjelasan Batik</h4>
-                        <p id="penjelasan-batik-text">Batik Probolinggo memiliki motif khas yang terinspirasi dari keindahan alam dan budaya lokal.</p>
+                    <!-- Refleksi -->
+                    <div class="materi-card" id="materi-refleksi">
+                        <div class="materi-card-header">
+                            <div class="materi-card-icon materi-card-icon-purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="3 2"/>
+                                    <polygon points="6 8 2 14 10 14"/>
+                                    <polygon points="18 8 22 14 14 14"/>
+                                </svg>
+                            </div>
+                            <h3>Refleksi <span class="materi-card-sub">(Pencerminan)</span></h3>
+                        </div>
+                        <div class="materi-card-body">
+                            <p>Refleksi adalah transformasi yang memindahkan setiap titik dengan sifat bayangan cermin. Jarak titik asal ke garis cermin sama persis dengan jarak bayangan ke garis cermin.</p>
+                            <div class="materi-formula">
+                                <span class="formula-label">Rumus:</span>
+                                Refleksi terhadap garis <strong>x = h</strong> : <strong>(x, y) → (2h − x, y)</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rotasi -->
+                    <div class="materi-card" id="materi-rotasi">
+                        <div class="materi-card-header">
+                            <div class="materi-card-icon materi-card-icon-yellow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <path d="M21.5 2v6h-6"/>
+                                    <path d="M21.5 8A9 9 0 1 0 18.36 18.36"/>
+                                </svg>
+                            </div>
+                            <h3>Rotasi <span class="materi-card-sub">(Perputaran)</span></h3>
+                        </div>
+                        <div class="materi-card-body">
+                            <p>Rotasi adalah perputaran suatu objek terhadap titik pusat tertentu sebesar sudut pusat. Rotasi mengubah arah menghadap/orientasi objek.</p>
+                            <div class="materi-formula">
+                                <span class="formula-label">Rumus:</span>
+                                Rotasi sebesar <strong>90°</strong> berlawanan arah jarum jam dengan pusat (0, 0) : <strong>(x, y) → (−y, x)</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dilatasi -->
+                    <div class="materi-card" id="materi-dilatasi">
+                        <div class="materi-card-header">
+                            <div class="materi-card-icon materi-card-icon-green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <rect x="4" y="4" width="8" height="8" rx="1"/>
+                                    <rect x="8" y="8" width="12" height="12" rx="1.5" stroke-dasharray="3 2"/>
+                                    <polyline points="14 4 20 4 20 10"/>
+                                </svg>
+                            </div>
+                            <h3>Dilatasi <span class="materi-card-sub">(Perkalian Skala)</span></h3>
+                        </div>
+                        <div class="materi-card-body">
+                            <p>Dilatasi adalah transformasi yang memperbesar atau memperkecil ukuran suatu bangun tanpa mengubah bentuknya, berdasarkan titik pusat dan faktor skala <strong>k</strong>.</p>
+                            <div class="materi-formula">
+                                <span class="formula-label">Rumus:</span>
+                                Jika titik <strong>P(x, y)</strong> didilatasi dengan pusat <strong>O(0, 0)</strong> dan faktor skala <strong>k</strong>, maka <strong>P'(kx, ky)</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kekongruenan -->
+                    <div class="materi-card" id="materi-kekongruenan">
+                        <div class="materi-card-header">
+                            <div class="materi-card-icon materi-card-icon-teal">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <rect x="3" y="6" width="8" height="8" rx="1"/>
+                                    <rect x="13" y="6" width="8" height="8" rx="1"/>
+                                    <line x1="11" y1="18" x2="13" y2="18" stroke-width="2.5"/>
+                                    <line x1="10" y1="20" x2="14" y2="20" stroke-width="2.5"/>
+                                </svg>
+                            </div>
+                            <h3>Kekongruenan <span class="materi-card-sub">(≅)</span></h3>
+                        </div>
+                        <div class="materi-card-body">
+                            <p>Dua bangun dikatakan <strong>kongruen</strong> jika memiliki bentuk dan ukuran yang sama persis. Sisi-sisi yang bersesuaian sama panjang, dan sudut-sudut bersesuaian sama besar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kesebangunan -->
+                    <div class="materi-card" id="materi-kesebangunan">
+                        <div class="materi-card-header">
+                            <div class="materi-card-icon materi-card-icon-indigo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                    <rect x="3" y="8" width="6" height="6" rx="1"/>
+                                    <rect x="13" y="4" width="10" height="10" rx="1.5"/>
+                                    <path d="M9 14 L13 14" stroke-dasharray="2 2"/>
+                                </svg>
+                            </div>
+                            <h3>Kesebangunan <span class="materi-card-sub">(~)</span></h3>
+                        </div>
+                        <div class="materi-card-body">
+                            <p>Dua bangun dikatakan <strong>sebangun</strong> jika memiliki bentuk yang sama dan sudut-sudut yang bersesuaian sama besar, tetapi ukurannya berbeda secara proporsional.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Penjelasan Matematika panel -->
-                <div class="penjelasan-panel hidden" id="panel-matematika">
-                    <div class="penjelasan-content">
-                        <h4>Penjelasan Matematika</h4>
-                        <p id="penjelasan-matematika-text">Motif batik ini menunjukkan konsep transformasi geometri berupa refleksi dan simetri rotasi.</p>
+                <!-- ======== Analisis Transformasi pada Batik ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi Geometri pada Batik</span>
+                    </div>
+
+                    <!-- Foto batik dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-transformasi-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Probolinggo" class="galeri-showcase-img" id="img-batik-analisis">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik Probolinggo yang dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi empat jenis transformasi geometri: <strong>Translasi</strong> (kuning & biru muda), <strong>Refleksi</strong> (merah), <strong>Rotasi</strong> (ungu), dan <strong>Dilatasi</strong> (hijau).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Jenis Transformasi pada Batik</span>
+                        </div>
+
+                        <!-- Tabel visual -->
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel" id="tabel-transformasi">
+                                <thead>
+                                    <tr>
+                                        <th>Warna Highlight</th>
+                                        <th>Jenis Transformasi</th>
+                                        <th>Penjelasan Penampakan pada Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group color-badge-stacked">
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-yellow"></span>
+                                                    <span class="color-badge-text">Kuning</span>
+                                                </div>
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-cyan"></span>
+                                                    <span class="color-badge-text">Biru Muda</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-yellow">Translasi</strong><br><span class="transform-sub">(Pergeseran)</span></td>
+                                        <td>Motif utama dalam kotak (ujung kiri atas) digeser secara horisontal ke kanan sejauh <em>a</em> satuan untuk membentuk unit kotak berikutnya.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-red"></span>
+                                                <span class="color-badge-text">Merah<br>(Garis Putih)</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-red">Refleksi</strong><br><span class="transform-sub">(Pencerminan)</span></td>
+                                        <td>Di dalam satu modul kotak, area berwarna merah marun bertekstur jaring dicerminkan terhadap garis diagonal (garis sumbu cermin) menghasilkan bentuk simetris berlawanan.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-purple"></span>
+                                                <span class="color-badge-text">Ungu</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-purple">Rotasi</strong><br><span class="transform-sub">(Perputaran)</span></td>
+                                        <td>Motif lengkung sulur daun diputar sebesar <em>180°</em> pada baris berikutnya, sehingga orientasi lengkungan dan posisi daun berbalik arah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-green"></span>
+                                                <span class="color-badge-text">Hijau</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-green">Dilatasi</strong><br><span class="transform-sub">(Pengukuran Skala)</span></td>
+                                        <td>Pola kerapatan jala (grid) mengalami perubahan skala rasio ukuran garis kotak diagonal dari bagian dalam ke bagian tepi.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Prev/Next navigation -->
-                <div class="materi-nav">
-                    <button class="btn-nav-materi" id="btn-galeri-prev">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
-                            <polyline points="15 18 9 12 15 6"/>
+                <!-- ======== Analisis Transformasi pada Batik Mangga ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
                         </svg>
-                        <span>Sebelumnya</span>
-                    </button>
-                    <button class="btn-nav-materi" id="btn-galeri-next">
-                        <span>Selanjutnya</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
-                            <polyline points="9 18 15 12 9 6"/>
+                        <span>Analisis Transformasi pada Batik Mangga</span>
+                    </div>
+
+                    <!-- Foto batik mangga dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-2">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-mangga-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Mangga Probolinggo" class="galeri-showcase-img" id="img-batik-mangga">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik mangga Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi tiga jenis transformasi geometri: <strong>Translasi Diagonal</strong> (kuning &amp; biru muda), <strong>Rotasi</strong> (ungu), dan <strong>Dilatasi</strong> (hijau).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik mangga -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Jenis Transformasi pada Batik Mangga</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel" id="tabel-transformasi-mangga">
+                                <thead>
+                                    <tr>
+                                        <th>Warna Highlight</th>
+                                        <th>Jenis Transformasi</th>
+                                        <th>Penjelasan Penampakan pada Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group color-badge-stacked">
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-yellow"></span>
+                                                    <span class="color-badge-text">Kuning</span>
+                                                </div>
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-cyan"></span>
+                                                    <span class="color-badge-text">Biru Muda</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-yellow">Translasi Diagonal</strong><br><span class="transform-sub">(Pergeseran)</span></td>
+                                        <td>Rangkaian pasang buah mangga oranye berpindah secara sejajar menyusuri garis diagonal garis latar (vektor panah merah) dari kiri atas ke kanan bawah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-purple"></span>
+                                                <span class="color-badge-text">Ungu</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-purple">Rotasi</strong><br><span class="transform-sub">(Perputaran Miring)</span></td>
+                                        <td>Tangkai dan daun mangga mengalami perputaran sudut rotasi sekitar <em>90°</em> atau <em>180°</em> sehingga membentuk keseimbangan visual di sepanjang kain.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-green"></span>
+                                                <span class="color-badge-text">Hijau</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-green">Dilatasi</strong><br><span class="transform-sub">(Perubahan Skala Motif)</span></td>
+                                        <td>Pengrajin menggunakan prinsip dilatasi saat menggambar objek buah mangga berukuran besar berbanding dengan butiran anggur merah dan bunga kuning yang jauh lebih kecil (<em>k &lt; 1</em>).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Bunga ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
                         </svg>
-                    </button>
+                        <span>Analisis Transformasi pada Batik Bunga</span>
+                    </div>
+
+                    <!-- Foto batik bunga dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-3">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-bunga-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Bunga Probolinggo" class="galeri-showcase-img" id="img-batik-bunga">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik bunga Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi lima konsep geometri: <strong>Translasi</strong> (biru), <strong>Refleksi</strong> (merah), <strong>Rotasi</strong> (hijau tua), <strong>Dilatasi</strong> (kuning/oranye), dan <strong>Kekongruenan</strong> (ungu).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik bunga -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Jenis Transformasi pada Batik Bunga</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel" id="tabel-transformasi-bunga">
+                                <thead>
+                                    <tr>
+                                        <th>Warna Highlight</th>
+                                        <th>Jenis Transformasi</th>
+                                        <th>Penjelasan Penampakan pada Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-blue"></span>
+                                                <span class="color-badge-text">Biru</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-blue">Translasi</strong><br><span class="transform-sub">(Pergeseran Motif)</span></td>
+                                        <td>Motif bunga berwarna kuning-emas diulang sejajar secara horizontal dan vertikal. Posisi Bunga 1 digeser sejauh vektor <em>T(a, 0)</em> untuk menghasilkan Bunga 2 di sebelahnya.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-red"></span>
+                                                <span class="color-badge-text">Merah</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-red">Refleksi</strong><br><span class="transform-sub">(Pencerminan Sumbu Simetri)</span></td>
+                                        <td>Pada Bunga Merah di bagian tengah, sisi kiri dan kanan merupakan hasil pencerminan terhadap sumbu simetri tegak (vertikal), sedangkan sisi atas dan bawah dicerminkan terhadap sumbu mendatar (horizontal).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-teal"></span>
+                                                <span class="color-badge-text">Hijau Tua</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-teal">Rotasi</strong><br><span class="transform-sub">(Perputaran Pusat Motif)</span></td>
+                                        <td>Kelopak bunga tersusun secara melingkar. Satu kelopak diputar sebesar <em>90°</em> mengelilingi titik pusat bunga untuk membentuk kelopak berikutnya.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-orange"></span>
+                                                <span class="color-badge-text">Kuning/Oranye</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-orange">Dilatasi &amp; Kesebangunan</strong><br><span class="transform-sub">(Perubahan Ukuran)</span></td>
+                                        <td>Terlihat perbedaan antara motif bunga kuning yang berukuran besar dengan ornamen bunga kecil di atasnya. Keduanya sebangun karena memiliki bentuk kelopak dan struktur yang serupa, tetapi ukurannya diperkecil dengan faktor skala <em>k &lt; 1</em>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-purple"></span>
+                                                <span class="color-badge-text">Ungu</span>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-purple">Kekongruenan</strong><br><span class="transform-sub">(Persis Sama &amp; Identik)</span></td>
+                                        <td>Ornamen ukiran lengkung di pojok kiri bawah dan kanan bawah adalah kongruen karena dicetak/dilukis dengan pola, panjang, dan bentuk yang persis identik.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Gurda ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Gurda</span>
+                    </div>
+
+                    <!-- Foto batik gurda dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-4">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-gurda-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Gurda Probolinggo" class="galeri-showcase-img" id="img-batik-gurda">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik gurda (sayap) Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi dua jenis transformasi geometri: <strong>Rotasi 180° / Refleksi</strong> (merah) dan <strong>Translasi Diagonal</strong> (biru).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik gurda -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Jenis Transformasi pada Batik Gurda</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel" id="tabel-transformasi-gurda">
+                                <thead>
+                                    <tr>
+                                        <th>Warna Highlight</th>
+                                        <th>Jenis Transformasi</th>
+                                        <th>Penjelasan Penampakan pada Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group color-badge-stacked">
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-red"></span>
+                                                    <span class="color-badge-text">Merah</span>
+                                                </div>
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-pink"></span>
+                                                    <span class="color-badge-text">Merah Muda</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-red">Rotasi 180° / Refleksi</strong><br><span class="transform-sub">(Transformasi Ornamen Sayap)</span></td>
+                                        <td>Motif sayap gurda di kanan atas jika diputar <em>180°</em> terhadap titik pusat bidang kain batik akan menghasilkan posisi dan orientasi motif sayap di kiri bawah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="color-badge-group color-badge-stacked">
+                                                <div class="color-badge-row">
+                                                    <span class="color-badge color-blue"></span>
+                                                    <span class="color-badge-text">Biru</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><strong class="text-color-blue">Translasi Diagonal</strong><br><span class="transform-sub">(Translasi Sepanjang Garis Miring)</span></td>
+                                        <td>Pola daun-daun kecil dan sulur berulang secara konsisten mengikuti pola garis lurus diagonal. Hal ini menerapkan translasi berulang <em>T(a, b)</em>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Daun ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Daun</span>
+                    </div>
+
+                    <!-- Foto batik daun dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-5">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap galeri-showcase-img-wrap-light">
+                                <img src="assets/images/batik-daun-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Daun Probolinggo" class="galeri-showcase-img" id="img-batik-daun">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik daun Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi enam konsep geometri: <strong>Translasi</strong> (merah), <strong>Refleksi</strong> (ungu), <strong>Rotasi</strong> (oranye), <strong>Dilatasi</strong> (hijau), <strong>Kekongruenan</strong> (biru muda), dan <strong>Kesebangunan</strong> (hijau).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik daun -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Konsep Geometri pada Batik Daun</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel" id="tabel-transformasi-daun">
+                                <thead>
+                                    <tr>
+                                        <th>Konsep Geometri</th>
+                                        <th>Warna Highlight</th>
+                                        <th>Bagian Motif Batik yang Dihighlight</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="text-color-red">Translasi</strong><br><span class="transform-sub">(Pergeseran)</span></td>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-red"></span>
+                                                <span class="color-badge-text">Merah</span>
+                                            </div>
+                                        </td>
+                                        <td>Pengulangan motif bunga oranye dari Translasi A ke Translasi B tanpa merubah bentuk &amp; arah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-purple">Refleksi</strong><br><span class="transform-sub">(Pencerminan)</span></td>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-purple"></span>
+                                                <span class="color-badge-text">Ungu</span>
+                                            </div>
+                                        </td>
+                                        <td>Susunan simetris daun/pucuk di kiri dan kanan dahan utama (seperti cermin).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-orange">Rotasi</strong><br><span class="transform-sub">(Perutaran)</span></td>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-orange"></span>
+                                                <span class="color-badge-text">Oranye</span>
+                                            </div>
+                                        </td>
+                                        <td>Perputaran posisi daun abu-abu bertanduk pada sudut tertentu (Rotasi 1 vs Rotasi 2).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">Dilatasi</strong><br><span class="transform-sub">(Skala)</span></td>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-green"></span>
+                                                <span class="color-badge-text">Hijau</span>
+                                            </div>
+                                        </td>
+                                        <td>Pembesaran/pengecilan daun (Daun Besar vs Daun Kecil).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-blue">Kekongruenan</strong></td>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-cyan"></span>
+                                                <span class="color-badge-text">Biru Muda</span>
+                                            </div>
+                                        </td>
+                                        <td>Dua motif bunga oranye yang persis sama ukuran dan bentuknya (Kongruen 1 &amp; 2).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">Kesebangunan</strong></td>
+                                        <td>
+                                            <div class="color-badge-group">
+                                                <span class="color-badge color-green"></span>
+                                                <span class="color-badge-text">Hijau</span>
+                                            </div>
+                                        </td>
+                                        <td>Dua motif daun dengan bentuk serupa namun proporsi ukurannya berbeda.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Teratai ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Teratai</span>
+                    </div>
+
+                    <!-- Foto batik teratai dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-6">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-teratai-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Teratai Probolinggo" class="galeri-showcase-img" id="img-batik-teratai">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik teratai Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi enam konsep geometri: <strong>Translasi</strong> (kuning), <strong>Refleksi</strong> (merah), <strong>Rotasi</strong> (ungu), <strong>Dilatasi</strong> (oranye), <strong>Kekongruenan</strong> (hijau tua), dan <strong>Kesebangunan</strong> (hijau).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik teratai -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Konsep Geometri pada Batik Teratai</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel galeri-tabel-4col" id="tabel-transformasi-teratai">
+                                <thead>
+                                    <tr>
+                                        <th>Kolom Highlight</th>
+                                        <th>Materi yang Sesuai</th>
+                                        <th>Penjelasan Materi &amp; Konsep Matematika</th>
+                                        <th>Bagian / Penunjukan pada Gambar Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="text-color-yellow">1. TRANSLASI</strong></td>
+                                        <td>Translasi<br><span class="transform-sub">(Pergeseran)</span></td>
+                                        <td>Pergeseran objek sejauh vektor <em>T(a,b)</em>. Bentuk, ukuran, dan arah objek tetap sama.<br><strong>P(x,y) &rarr; P'(x+a, y+b)</strong></td>
+                                        <td>Motif bunga pink di kotak <strong>TRANSLASI (A)</strong> digeser ke posisi <strong>TRANSLASI (B)</strong> di kanan bawah dengan bentuk dan arah yang sejajar.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-red">2. REFLEKSI</strong></td>
+                                        <td>Refleksi<br><span class="transform-sub">(Pencerminan)</span></td>
+                                        <td>Pencerminan terhadap garis cermin. Kelopak bunga bagian kanan merupakan bayangan cermin dari kelopak bagian kiri.<br><strong>(x,y) &rarr; (-x,y)</strong></td>
+                                        <td>Mahkota bunga pink pada kotak <strong>REFLEKSI</strong> memiliki simetri lipat vertikal (cermin tegak lurus di tengah bunga).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-purple">3. ROTASI</strong></td>
+                                        <td>Rotasi<br><span class="transform-sub">(Perputaran)</span></td>
+                                        <td>Perputaran posisi sebesar sudut <em>&theta;</em> terhadap titik pusat. Orientasi bunga berubah arah.<br><strong>(x,y) &rarr; (-y,x)</strong></td>
+                                        <td>Motif bunga pink pada <strong>ROTASI (A)</strong> menghadap ke atas-kiri, diputar sebesar <em>&plusmn;90&deg;</em> pada <strong>ROTASI (B)</strong> sehingga menghadap ke bawah-kiri.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-orange">4. DILATASI</strong></td>
+                                        <td>Dilatasi<br><span class="transform-sub">(Perkalian Ukuran)</span></td>
+                                        <td>Perubahan ukuran objek dengan faktor skala <em>k</em>.<br><strong>P(x,y) &rarr; P'(kx, ky)</strong></td>
+                                        <td>Pasangan motif buah kuning oval pada <strong>DILATASI (A)</strong> berukuran lebih besar dibanding pasangannya pada <strong>DILATASI (B)</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-teal">5. KONGRUAN</strong></td>
+                                        <td>Kekongruenan<br><span class="transform-sub">(&cong;)</span></td>
+                                        <td>Dua bangun memiliki bentuk dan ukuran yang sama persis (rasio ukuran <em>1:1</em>).</td>
+                                        <td>Elemen daun/kelopak cokelat bergerigi pada <strong>KONGRUAN (A)</strong> dan <strong>KONGRUAN (B)</strong> sama persis baik bentuk maupun ukurannya.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">6. SEBANGUN</strong></td>
+                                        <td>Kesebangunan<br><span class="transform-sub">(~)</span></td>
+                                        <td>Dua bangun memiliki bentuk sama dengan perbandingan panjang sisi-sisi bersesuaian bernilai senilai/proporsional.</td>
+                                        <td>Motif buah kuning oval besar (A) dan kecil (B) memiliki bentuk geometri yang sama persis tetapi ukurannya proporsional.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Anggur ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Anggur</span>
+                    </div>
+
+                    <!-- Foto batik anggur dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-7">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-anggur-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Anggur Probolinggo" class="galeri-showcase-img" id="img-batik-anggur">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik anggur Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi lima konsep geometri: <strong>Translasi</strong> (merah), <strong>Refleksi</strong> (biru), <strong>Rotasi</strong> (oranye), <strong>Dilatasi</strong> (ungu), dan <strong>Kekongruenan</strong> (hijau).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik anggur -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Konsep Geometri pada Batik Anggur</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel galeri-tabel-4col" id="tabel-transformasi-anggur">
+                                <thead>
+                                    <tr>
+                                        <th>Highlight &amp; Kode</th>
+                                        <th>Materi Matematika</th>
+                                        <th>Penjelasan Materi</th>
+                                        <th>Bagian Gambar yang Sesuai</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="text-color-red">1A &amp; 1B (Merah)</strong></td>
+                                        <td><strong>Translasi</strong></td>
+                                        <td>Memindahkan motif sejauh arah diagonal tanpa mengubah bentuk, ukuran, atau orientasinya.</td>
+                                        <td>Rangkaian buah anggur merah beserta daunnya diulang dan digeser sejajar sepanjang sulur diagonal.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-blue">2 (Biru)</strong></td>
+                                        <td><strong>Refleksi</strong></td>
+                                        <td>Posisi elemen dibuat simetris terhadap sumbu pencerminan cermin imajiner.</td>
+                                        <td>Pasangan daun dan kelompok buah mangga di bagian atas yang posisinya saling berhadapan/mencermin.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-orange">3A &amp; 3B (Oranye)</strong></td>
+                                        <td><strong>Rotasi</strong></td>
+                                        <td>Memutar posisi dan arah motif sebesar sudut tertentu (misal <em>180&deg;</em>) sehingga arah tangkai berbalik.</td>
+                                        <td>Rumpun motif mangga di kiri bawah (<strong>3A</strong>) berorientasi ke atas, sedangkan di kanan bawah (<strong>3B</strong>) berputar ke bawah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-purple">4A &amp; 4B (Ungu)</strong></td>
+                                        <td><strong>Dilatasi</strong></td>
+                                        <td>Pengubahan skala ukuran motif dengan faktor skala <em>k</em> (faktor perbesaran/perkecilan).</td>
+                                        <td>Perbandingan elemen bentuk bunga kecil (<strong>4A</strong>) dengan elemen motif kelompok mangga besar (<strong>4B</strong>).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">5A &amp; 5B (Hijau)</strong></td>
+                                        <td><strong>Kekongruenan</strong><br><span class="transform-sub">(&cong;)</span></td>
+                                        <td>Dua atau lebih objek geometri yang identik sama persis dalam bentuk dan ukurannya.</td>
+                                        <td>Bunga-bunga kecil berwarna kuning yang berulang di sepanjang garis sulur cokelat memiliki ukuran dan bentuk yang sama.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Ayam ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Ayam</span>
+                    </div>
+
+                    <!-- Foto batik ayam dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-8">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-ayam-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Ayam Probolinggo" class="galeri-showcase-img" id="img-batik-ayam">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik ayam Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi enam konsep geometri: <strong>Translasi</strong> (merah), <strong>Refleksi</strong> (cyan), <strong>Rotasi</strong> (kuning), <strong>Dilatasi</strong> (pink), <strong>Kekongruenan</strong> (hijau), dan <strong>Kesebangunan</strong> (biru).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik ayam -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Konsep Geometri pada Batik Ayam</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel galeri-tabel-4col" id="tabel-transformasi-ayam">
+                                <thead>
+                                    <tr>
+                                        <th>Highlight Warna Area</th>
+                                        <th>Materi Matematika</th>
+                                        <th>Penjelasan Materi yang Terkait</th>
+                                        <th>Bagian / Letak pada Gambar Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="text-color-red">Highlight Merah</strong></td>
+                                        <td><strong>Translasi</strong><br><span class="transform-sub">(Pergeseran)</span></td>
+                                        <td>Memindahkan titik/objek sepanjang garis lurus dengan arah dan jarak tertentu.<br>Rumus: <strong>P(x, y) T(a,b) &rarr; P'(x + a, y + b)</strong></td>
+                                        <td><strong>1. Translasi (Asal &amp; Pergeseran):</strong> Motif Ayam Jantan &amp; Bunga di kotak kiri bawah digeser searah vektor translasi menuju posisi kanan atas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-blue">Highlight Cyan</strong></td>
+                                        <td><strong>Refleksi</strong><br><span class="transform-sub">(Pencerminan)</span></td>
+                                        <td>Memindahkan objek dengan sifat cermin datar. Jarak objek ke cermin sama dengan jarak bayangan ke cermin.<br>Rumus (Sumbu-Y): <strong>P(x, y) &rarr; P'(-x, y)</strong></td>
+                                        <td><strong>2. Refleksi:</strong> Motif Ayam Jantan yang berhadapan (satu menghadap kanan dan satu menghadap kiri) terpisah oleh garis cermin vertikal.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-yellow">Highlight Kuning</strong></td>
+                                        <td><strong>Rotasi</strong><br><span class="transform-sub">(Perputaran)</span></td>
+                                        <td>Memutar objek sejauh sudut <em>&theta;</em> terhadap titik pusat tertentu.<br>Rumus (90&deg;): <strong>P(x, y) &rarr; P'(-y, x)</strong></td>
+                                        <td><strong>3. Rotasi:</strong> Frame/Bingkai berbentuk Belah Ketupat Miring yang diputar membentuk kisi jajaran kisi batik teratur.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-pink">Highlight Pink</strong></td>
+                                        <td><strong>Dilatasi</strong><br><span class="transform-sub">(Perkalian Skala)</span></td>
+                                        <td>Mengubah ukuran objek (memperbesar/memperkecil) dengan faktor skala <em>k</em> tanpa mengubah bentuk.<br>Rumus: <strong>P(x, y) [O, k] &rarr; P'(kx, ky)</strong></td>
+                                        <td><strong>4. Dilatasi:</strong> Perbandingan antara bingkai belah ketupat motif utama yang besar dengan belah ketupat aksen yang kecil di selang-selingnya.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">Highlight Hijau</strong></td>
+                                        <td><strong>Kekongruenan</strong><br><span class="transform-sub">(&cong;)</span></td>
+                                        <td>Dua bangun dikatakan <em>kongruen</em> jika memiliki <strong>bentuk dan ukuran yang persis sama</strong> serta sudut bersesuaian sama besar.</td>
+                                        <td><strong>5. Kekongruenan:</strong> Motif Belah Ketupat bertekstur serat kayu (Kongruen A &amp; B) yang diulang dengan ukuran dan bentuk seragam.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-blue">Highlight Biru</strong></td>
+                                        <td><strong>Kesebangunan</strong><br><span class="transform-sub">(~)</span></td>
+                                        <td>Dua bangun dikatakan <em>sebangun</em> jika <strong>bentuknya sama</strong>, sudut bersesuaian sama besar, tetapi ukurannya proporsional.</td>
+                                        <td><strong>6. Kesebangunan:</strong> Motif ornamen Daun/Anggur pada belah ketupat sedang yang serupa dengan ornamen pada belah ketupat besar.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Kupu-Kupu ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Kupu-Kupu</span>
+                    </div>
+
+                    <!-- Foto batik kupu-kupu dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-9">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap">
+                                <img src="assets/images/batik-kupu-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Kupu-Kupu Probolinggo" class="galeri-showcase-img" id="img-batik-kupu">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik kupu-kupu &amp; sulur Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi enam konsep geometri: <strong>Refleksi</strong> (merah), <strong>Translasi</strong> (biru), <strong>Rotasi</strong> (oranye), <strong>Dilatasi</strong> (hijau), <strong>Kekongruenan</strong> (ungu), dan <strong>Kesebangunan</strong> (pink).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik kupu-kupu -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Konsep Geometri pada Batik Kupu-Kupu</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel galeri-tabel-4col" id="tabel-transformasi-kupu">
+                                <thead>
+                                    <tr>
+                                        <th>Materi Geometri</th>
+                                        <th>Bagian Batik (Highlight)</th>
+                                        <th>Penjelasan Konsep &amp; Rumus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="text-color-red">REFLEKSI</strong><br><span class="transform-sub">Pencerminan</span></td>
+                                        <td><strong>Garis &amp; Kotak Merah:</strong> Bunga mahkota krem-oranye di tengah bagian atas dicerminkan terhadap garis tengah horizontal ke bagian bawah.</td>
+                                        <td>Memindahkan titik dengan sifat bayangan cermin. Jarak objek ke cermin sama dengan jarak bayangan ke cermin.<br><strong>P(x,y) &rarr; Sumbu X &rarr; P'(x, -y)</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-blue">TRANSLASI</strong><br><span class="transform-sub">Pergeseran</span></td>
+                                        <td><strong>Kotak &amp; Garis Biru:</strong> Bunga merah muda di posisi kiri atas digeser sejauh garis panah menuju posisi kanan bawah.</td>
+                                        <td>Memindahkan semua titik sejauh jarak dan arah tertentu. Bentuk, ukuran, dan orientasi tetap.<br><strong>(x', y') = (x + a, b)</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-orange">ROTASI</strong><br><span class="transform-sub">Perputaran</span></td>
+                                        <td><strong>Lingkaran Oranye:</strong> Sulur daun hijau bergelombang di pojok kanan atas diputar <em>180&deg;</em> menuju ke pojok kiri bawah.</td>
+                                        <td>Memutar titik-titik sejauh sudut <em>&theta;</em> terhadap titik pusat O(0,0).<br><strong>Rotasi 180&deg;: P(x,y) &rarr; P'(-x, -y)</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">DILATASI</strong><br><span class="transform-sub">Perkalian Skala</span></td>
+                                        <td><strong>Kotak Hijau (Bawah):</strong> Bunga krem kecil di bawah tengah diperbesar (perkalian skala <em>k &gt; 1</em>) menjadi motif bunga krem di pojok kiri bawah.</td>
+                                        <td>Mengubah ukuran (memperbesar/memperkecil) tanpa mengubah bentuk dasar objek.<br><strong>[O, k] : P(x,y) &rarr; P'(kx, ky)</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-purple">KEKONGRUENAN</strong><br><span class="transform-sub">Sama &amp; Sebangun</span></td>
+                                        <td><strong>Lingkaran Ungu:</strong> Daun hijau kecil di kanan tengah dan kiri tengah yang memiliki ukuran dan bentuk 100% persis sama.</td>
+                                        <td>Dua bangun datar yang memiliki <strong>bentuk dan ukuran persis sama</strong>, bersesuaian sama besar, bersesuaian sama panjang.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-pink">KESEBANGUNAN</strong><br><span class="transform-sub">Bentuk Serupa</span></td>
+                                        <td><strong>Lingkaran Pink:</strong> Kupu-kupu besar di sisi kanan atas dan kupu-kupu kecil di sisi kiri bawah memiliki bentuk serupa namun ukuran berbeda.</td>
+                                        <td>Dua bangun datar yang memiliki <strong>bentuk sama</strong> dengan sudut-sudut bersesuaian sama besar, tetapi panjang sisi-sisi bersesuaian <strong>proporsional</strong>.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== Analisis Transformasi pada Batik Ketupat ======== -->
+                <div class="galeri-analisis-section">
+                    <div class="galeri-analisis-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Analisis Transformasi pada Batik Ketupat</span>
+                    </div>
+
+                    <!-- Foto batik ketupat dengan highlight transformasi -->
+                    <div class="galeri-image-showcase" id="galeri-image-showcase-10">
+                        <div class="galeri-showcase-card">
+                            <div class="galeri-showcase-img-wrap galeri-showcase-img-wrap-light">
+                                <img src="assets/images/batik-ketupat-analisis.png" alt="Analisis Transformasi Geometri pada Motif Batik Ketupat Probolinggo" class="galeri-showcase-img" id="img-batik-ketupat">
+                            </div>
+                            <div class="galeri-showcase-caption">
+                                <div class="galeri-caption-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="16" x2="12" y2="12"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                    </svg>
+                                </div>
+                                <p>Motif batik ketupat Probolinggo dianalisis menggunakan <strong>highlight warna</strong> untuk mengidentifikasi empat kelompok konsep geometri: <strong>Translasi &amp; Kekongruenan</strong> (merah), <strong>Refleksi &amp; Rotasi</strong> (kuning), <strong>Dilatasi &amp; Kesebangunan</strong> (hijau), dan <strong>Translasi &amp; Geometri Bidang</strong> (biru).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabel penjelasan transformasi batik ketupat -->
+                    <div class="galeri-tabel-section">
+                        <div class="galeri-tabel-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="3" y1="15" x2="21" y2="15"/>
+                                <line x1="9" y1="3" x2="9" y2="21"/>
+                            </svg>
+                            <span>Tabel Konsep Geometri pada Batik Ketupat</span>
+                        </div>
+
+                        <div class="galeri-tabel-wrap">
+                            <table class="galeri-tabel" id="tabel-transformasi-ketupat">
+                                <thead>
+                                    <tr>
+                                        <th>Highlight Area</th>
+                                        <th>Materi Matematika</th>
+                                        <th>Penjelasan pada Motif Batik</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="text-color-red">Highlight MERAH</strong><br><span class="transform-sub">Elemen Belah Ketupat Marun Berulang</span></td>
+                                        <td><strong>Translasi &amp; Kekongruenan</strong></td>
+                                        <td>Motif belah ketupat berwarna marun yang berisi pola bintik-bintik digeser (ditranslasikan) secara berulang ke arah diagonal dan vertikal. Karena bentuk dan ukurannya persis sama, elemen-elemen ini juga memenuhi syarat kekongruenan.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-yellow">Highlight KUNING</strong><br><span class="transform-sub">Motif Bunga Merah</span></td>
+                                        <td><strong>Refleksi (Pencerminan) &amp; Rotasi</strong></td>
+                                        <td>Kelopak bunga merah memiliki susunan simetris kiri-kanan terhadap sumbu tegak (refleksi). Selain itu, susunan kelopak mengelilingi titik pusat menunjukkan konsep rotasi perputaran sudut.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-green">Highlight HIJAU</strong><br><span class="transform-sub">Pola Bunga Besar vs Bunga Kecil / Kuncup</span></td>
+                                        <td><strong>Dilatasi &amp; Kesebangunan</strong></td>
+                                        <td>Pengulangan bentuk bunga dari ukuran mekar (besar) hingga ukuran kuncup/kecil merupakan contoh dilatasi (perubahan skala). Bentuknya memiliki proporsi sudut yang sama sehingga tergolong sebangun.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="text-color-blue">Highlight BIRU</strong><br><span class="transform-sub">Bingkai Lengkung Latar Belakang</span></td>
+                                        <td><strong>Translasi &amp; Geometri Bidang</strong></td>
+                                        <td>Belah ketupat berwarna pink yang diulang secara konstan dengan pola pergeseran (translasi) sejajar.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Footer -->
@@ -216,7 +1258,7 @@
                     <div class="footer-brand">
                         <span class="footer-text">Galeri Etnomatematika</span>
                         <div class="footer-logo">
-                            <img src="assets/images/logo.jpg" alt="Logo">
+                            <img src="assets/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -236,12 +1278,91 @@
                     </div>
                 </div>
 
-                <!-- Digital Canvas -->
-                <div class="canvas-wrap">
-                    <canvas id="digital-canvas" width="380" height="340"></canvas>
-                    <div class="canvas-placeholder" id="canvas-placeholder">
-                        <span>Kanvas Digital</span>
+                <!-- Studio Toolbar -->
+                <div class="studio-toolbar" id="studio-toolbar">
+                    <!-- Drawing Tools -->
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Alat</span>
+                        <div class="toolbar-btns">
+                            <button class="tool-btn active" data-tool="pen" title="Pena">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                                </svg>
+                            </button>
+                            <button class="tool-btn" data-tool="eraser" title="Penghapus">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <path d="M20 20H7L3 16l9-9 8 8-4 4z"/><path d="M6.5 13.5L2 9"/>
+                                </svg>
+                            </button>
+                            <button class="tool-btn" data-tool="line" title="Garis">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <line x1="5" y1="19" x2="19" y2="5"/>
+                                </svg>
+                            </button>
+                            <button class="tool-btn" data-tool="rect" title="Persegi">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                </svg>
+                            </button>
+                            <button class="tool-btn" data-tool="circle" title="Lingkaran">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <circle cx="12" cy="12" r="10"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
+
+                    <!-- Colors -->
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Warna</span>
+                        <div class="toolbar-colors" id="toolbar-colors">
+                            <button class="color-btn active" data-color="#2d2a3e" style="background:#2d2a3e" title="Hitam"></button>
+                            <button class="color-btn" data-color="#F68D1C" style="background:#F68D1C" title="Orange"></button>
+                            <button class="color-btn" data-color="#8077C1" style="background:#8077C1" title="Purple"></button>
+                            <button class="color-btn" data-color="#EEE78E" style="background:#EEE78E; border-color:#ccc" title="Kuning"></button>
+                            <button class="color-btn" data-color="#d97a10" style="background:#d97a10" title="Orange Tua"></button>
+                            <button class="color-btn" data-color="#6960a8" style="background:#6960a8" title="Purple Tua"></button>
+                            <button class="color-btn" data-color="#ef4444" style="background:#ef4444" title="Merah"></button>
+                            <button class="color-btn" data-color="#ffffff" style="background:#ffffff" title="Putih"></button>
+                        </div>
+                    </div>
+
+                    <!-- Stroke Width -->
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Ukuran: <span id="stroke-val">3</span>px</span>
+                        <input type="range" id="stroke-range" min="1" max="20" value="3" class="stroke-slider">
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="toolbar-group">
+                        <div class="toolbar-btns">
+                            <button class="action-btn" id="btn-undo" title="Undo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                                </svg>
+                            </button>
+                            <button class="action-btn" id="btn-redo" title="Redo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/>
+                                </svg>
+                            </button>
+                            <button class="action-btn action-btn-danger" id="btn-clear" title="Hapus Semua">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </button>
+                            <button class="action-btn action-btn-save" id="btn-save-canvas" title="Simpan Gambar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Canvas -->
+                <div class="canvas-wrap" id="canvas-wrap">
+                    <canvas id="digital-canvas"></canvas>
                 </div>
 
                 <!-- Prev/Next navigation -->
@@ -268,7 +1389,7 @@
                     <div class="footer-brand">
                         <span class="footer-text">Studio Simulasi Interaktif</span>
                         <div class="footer-logo">
-                            <img src="assets/images/logo.jpg" alt="Logo">
+                            <img src="assets/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -328,7 +1449,7 @@
                     <div class="footer-brand">
                         <span class="footer-text">Zona Tantangan</span>
                         <div class="footer-logo">
-                            <img src="assets/images/logo.jpg" alt="Logo">
+                            <img src="assets/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -440,7 +1561,7 @@
                     <div class="footer-brand">
                         <span class="footer-text">Dashboard & Progres</span>
                         <div class="footer-logo">
-                            <img src="assets/images/logo.jpg" alt="Logo">
+                            <img src="assets/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -461,35 +1582,45 @@
             </button>
             <div class="modal-header">
                 <h2>Panduan Fitur</h2>
-                <p>Cara menggunakan PROMATH GUI</p>
+                <p>Pelajari konsep transformasi geometri secara interaktif melalui 3 fitur utama:</p>
             </div>
             <div class="modal-body">
                 <div class="guide-item">
-                    <div class="guide-number">1</div>
+                    <div class="guide-number">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                    </div>
                     <div class="guide-text">
-                        <h4>Masukkan Nama</h4>
-                        <p>Ketik namamu di kolom input untuk personalisasi pengalaman belajar.</p>
+                        <h4>Galeri Etnomatematika</h4>
+                        <p>Eksplorasi filosofi motif Batik Probolinggo dan temukan struktur geometri tersembunyi di balik keindahan kain batik.</p>
                     </div>
                 </div>
                 <div class="guide-item">
-                    <div class="guide-number">2</div>
+                    <div class="guide-number guide-number-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
                     <div class="guide-text">
-                        <h4>Tekan Beranda</h4>
-                        <p>Klik tombol BERANDA untuk masuk ke menu utama aplikasi.</p>
+                        <h4>Studio Simulasi Interaktif</h4>
+                        <p>Laboratorium virtual tempat kamu bisa memanipulasi motif batik dengan aturan translasi, refleksi, rotasi, dan dilatasi secara langsung.</p>
                     </div>
                 </div>
                 <div class="guide-item">
-                    <div class="guide-number">3</div>
-                    <div class="guide-text">
-                        <h4>Pilih Menu</h4>
-                        <p>Pilih Galeri, Studio, Zona Tantangan, atau Dashboard sesuai kebutuhanmu.</p>
+                    <div class="guide-number guide-number-yellow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12l2 2 4-4"/>
+                        </svg>
                     </div>
-                </div>
-                <div class="guide-item">
-                    <div class="guide-number">4</div>
                     <div class="guide-text">
-                        <h4>Pelajari Materi & Latihan</h4>
-                        <p>Kunjungi halaman Materi dan Latihan untuk belajar dan berlatih.</p>
+                        <h4>Zona Tantangan <span class="guide-badge">Computational Thinking</span></h4>
+                        <p>Uji kemampuan logika dan pemecahan masalahmu melalui teka-teki pola batik dengan umpan balik skor otomatis.</p>
                     </div>
                 </div>
             </div>
