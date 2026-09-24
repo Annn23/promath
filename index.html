@@ -1272,98 +1272,561 @@
 
                 <!-- Title + batik deco -->
                 <div class="materi-header">
-                    <h2 class="materi-title" id="studio-title">BATIK .........</h2>
+                    <h2 class="materi-title" id="studio-title">Studio Simulasi Interaktif</h2>
                     <div class="materi-header-deco materi-header-deco-sm">
                         <img src="assets/images/batik-decoration.jpg" alt="Dekorasi">
                     </div>
                 </div>
 
-                <!-- Studio Toolbar -->
-                <div class="studio-toolbar" id="studio-toolbar">
-                    <!-- Drawing Tools -->
-                    <div class="toolbar-group">
-                        <span class="toolbar-label">Alat</span>
-                        <div class="toolbar-btns">
-                            <button class="tool-btn active" data-tool="pen" title="Pena">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <!-- Activity Tabs Navigator -->
+                <div class="aktivitas-tabs" id="aktivitas-tabs">
+                    <button class="akt-tab active" data-akt="1" id="akt-tab-1">
+                        <span class="akt-tab-num">1</span>
+                        <span class="akt-tab-text">Translasi &amp; Refleksi</span>
+                    </button>
+                    <button class="akt-tab" data-akt="2" id="akt-tab-2">
+                        <span class="akt-tab-num">2</span>
+                        <span class="akt-tab-text">Rotasi &amp; Pola</span>
+                    </button>
+                    <button class="akt-tab" data-akt="3" id="akt-tab-3">
+                        <span class="akt-tab-num">3</span>
+                        <span class="akt-tab-text">Dilatasi &amp; Teselasi</span>
+                    </button>
+                </div>
+
+                <!-- ============ AKTIVITAS 1: TRANSLASI & REFLEKSI ============ -->
+                <div class="aktivitas-content" id="aktivitas-1">
+
+                <!-- Aktivitas Header -->
+                <div class="aktivitas-header" id="aktivitas-header">
+                    <div class="aktivitas-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        Aktivitas 1
+                    </div>
+                    <h3 class="aktivitas-title">Pergeseran &amp; Pencerminan Motif</h3>
+                    <p class="aktivitas-sub">(Translasi &amp; Refleksi)</p>
+                </div>
+
+                <!-- Reference Batik Image -->
+                <div class="studio-ref-wrap">
+                    <div class="studio-ref-card">
+                        <div class="studio-ref-img-wrap">
+                            <img src="assets/images/batik-mangga-analisis.png" alt="Batik Mangga &amp; Anggur Probolinggo" class="studio-ref-img" id="studio-ref-img">
+                        </div>
+                        <div class="studio-ref-caption">
+                            <div class="studio-ref-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="16" x2="12" y2="12"/>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p><strong>Objek Batik:</strong> Unit ornamen dasar Mangga dan Anggur khas Probolinggo</p>
+                                <p><strong>Target Konsep:</strong> Translasi T(a,b) dan Refleksi terhadap sumbu koordinat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Panel -->
+                <div class="studio-controls" id="studio-controls">
+                    <div class="ctrl-row">
+                        <!-- Motif Selector -->
+                        <div class="ctrl-section">
+                            <div class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
                                     <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
                                 </svg>
-                            </button>
-                            <button class="tool-btn" data-tool="eraser" title="Penghapus">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                                    <path d="M20 20H7L3 16l9-9 8 8-4 4z"/><path d="M6.5 13.5L2 9"/>
+                                <span>Pilih Motif</span>
+                            </div>
+                            <div class="ctrl-btns">
+                                <button class="motif-btn active" data-motif="mangga" id="btn-motif-mangga">
+                                    <span class="motif-emoji">🥭</span> Mangga
+                                </button>
+                                <button class="motif-btn" data-motif="anggur" id="btn-motif-anggur">
+                                    <span class="motif-emoji">🍇</span> Anggur
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Reflection Buttons -->
+                        <div class="ctrl-section">
+                            <div class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                    <line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="3 2"/>
+                                    <polygon points="6 8 2 14 10 14"/>
+                                    <polygon points="18 8 22 14 14 14"/>
                                 </svg>
-                            </button>
-                            <button class="tool-btn" data-tool="line" title="Garis">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                                    <line x1="5" y1="19" x2="19" y2="5"/>
-                                </svg>
-                            </button>
-                            <button class="tool-btn" data-tool="rect" title="Persegi">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                </svg>
-                            </button>
-                            <button class="tool-btn" data-tool="circle" title="Lingkaran">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                                    <circle cx="12" cy="12" r="10"/>
-                                </svg>
-                            </button>
+                                <span>Refleksi</span>
+                            </div>
+                            <div class="ctrl-btns">
+                                <button class="reflect-btn" id="btn-reflect-y">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                        <line x1="12" y1="2" x2="12" y2="22"/>
+                                    </svg>
+                                    Sumbu-Y
+                                </button>
+                                <button class="reflect-btn" id="btn-reflect-x">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                        <line x1="2" y1="12" x2="22" y2="12"/>
+                                    </svg>
+                                    Sumbu-X
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Colors -->
-                    <div class="toolbar-group">
-                        <span class="toolbar-label">Warna</span>
-                        <div class="toolbar-colors" id="toolbar-colors">
-                            <button class="color-btn active" data-color="#2d2a3e" style="background:#2d2a3e" title="Hitam"></button>
-                            <button class="color-btn" data-color="#F68D1C" style="background:#F68D1C" title="Orange"></button>
-                            <button class="color-btn" data-color="#8077C1" style="background:#8077C1" title="Purple"></button>
-                            <button class="color-btn" data-color="#EEE78E" style="background:#EEE78E; border-color:#ccc" title="Kuning"></button>
-                            <button class="color-btn" data-color="#d97a10" style="background:#d97a10" title="Orange Tua"></button>
-                            <button class="color-btn" data-color="#6960a8" style="background:#6960a8" title="Purple Tua"></button>
-                            <button class="color-btn" data-color="#ef4444" style="background:#ef4444" title="Merah"></button>
-                            <button class="color-btn" data-color="#ffffff" style="background:#ffffff" title="Putih"></button>
+                    <!-- Translation Sliders -->
+                    <div class="ctrl-section ctrl-section-wide">
+                        <div class="ctrl-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                            <span>Translasi T(<strong id="display-a">0</strong>, <strong id="display-b">0</strong>)</span>
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-row">
+                                <label class="slider-label">a <span class="slider-hint">(horizontal)</span></label>
+                                <input type="range" min="-8" max="8" value="0" step="1" id="slider-a" class="sim-slider">
+                                <span class="slider-value" id="val-a">0</span>
+                            </div>
+                            <div class="slider-row">
+                                <label class="slider-label">b <span class="slider-hint">(vertikal)</span></label>
+                                <input type="range" min="-6" max="6" value="0" step="1" id="slider-b" class="sim-slider">
+                                <span class="slider-value" id="val-b">0</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Stroke Width -->
-                    <div class="toolbar-group">
-                        <span class="toolbar-label">Ukuran: <span id="stroke-val">3</span>px</span>
-                        <input type="range" id="stroke-range" min="1" max="20" value="3" class="stroke-slider">
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="toolbar-group">
-                        <div class="toolbar-btns">
-                            <button class="action-btn" id="btn-undo" title="Undo">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                                    <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
-                                </svg>
-                            </button>
-                            <button class="action-btn" id="btn-redo" title="Redo">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                                    <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/>
-                                </svg>
-                            </button>
-                            <button class="action-btn action-btn-danger" id="btn-clear" title="Hapus Semua">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                                    <polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                            <button class="action-btn action-btn-save" id="btn-save-canvas" title="Simpan Gambar">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-                                </svg>
-                            </button>
-                        </div>
+                    <!-- Reset Button -->
+                    <div class="ctrl-section ctrl-section-reset">
+                        <button class="reset-btn" id="btn-reset-transform">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                            </svg>
+                            Reset Semua
+                        </button>
                     </div>
                 </div>
 
-                <!-- Digital Canvas -->
-                <div class="canvas-wrap" id="canvas-wrap">
+                <!-- Canvas with Cartesian Grid -->
+                <div class="canvas-wrap canvas-wrap-sim" id="canvas-wrap">
                     <canvas id="digital-canvas"></canvas>
                 </div>
+
+                <!-- Info Panel -->
+                <div class="studio-info-panel" id="studio-info-panel">
+                    <div class="info-coords">
+                        <div class="coord-box coord-original">
+                            <span class="coord-label">Posisi Asli</span>
+                            <span class="coord-value" id="coord-original">P(2, 2)</span>
+                        </div>
+                        <div class="coord-arrow-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="14 7 19 12 14 17"/>
+                            </svg>
+                        </div>
+                        <div class="coord-box coord-transformed">
+                            <span class="coord-label">Bayangan</span>
+                            <span class="coord-value" id="coord-transformed">P'(2, 2)</span>
+                        </div>
+                    </div>
+                    <div class="info-formula" id="info-formula">
+                        <span class="formula-tag">Rumus:</span>
+                        <span id="formula-text">Geser slider atau aktifkan refleksi untuk melihat transformasi</span>
+                    </div>
+                </div>
+
+                <!-- Instruksi Aktivitas -->
+                <div class="studio-instruksi" id="studio-instruksi">
+                    <div class="instruksi-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <h4>Instruksi Aktivitas Siswa</h4>
+                    </div>
+                    <ol class="instruksi-list">
+                        <li>Pilih unit motif dasar <strong>Mangga</strong> atau <strong>Anggur</strong> pada kanvas kerja bidang Kartesius.</li>
+                        <li>Geser slider <strong>Translasi</strong> untuk menentukan koordinat pergeseran <strong>T = (a, b)</strong> hingga motif berpindah ke posisi yang diinginkan.</li>
+                        <li>Aktifkan tombol <strong>Refleksi (Sumbu-Y)</strong> untuk mencerminkan ornamen sehingga terbentuk pasangan motif simetris.</li>
+                        <li>Amati perubahan koordinat <strong>(x, y) → (−x, y)</strong> pada panel informasi instan.</li>
+                    </ol>
+                </div>
+
+                </div><!-- end aktivitas-1 -->
+
+                <!-- ============ AKTIVITAS 2: ROTASI & PATTERN REPEAT ============ -->
+                <div class="aktivitas-content" id="aktivitas-2" style="display:none">
+
+                <!-- Aktivitas Header -->
+                <div class="aktivitas-header">
+                    <div class="aktivitas-badge aktivitas-badge-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        Aktivitas 2
+                    </div>
+                    <h3 class="aktivitas-title">Perputaran &amp; Pengulangan Pola</h3>
+                    <p class="aktivitas-sub">(Rotasi &amp; Pattern Repeat)</p>
+                </div>
+
+                <!-- Reference Batik Image -->
+                <div class="studio-ref-wrap">
+                    <div class="studio-ref-card">
+                        <div class="studio-ref-img-wrap">
+                            <img src="assets/images/batik-bunga-analisis.png" alt="Batik Bunga &amp; Geometris Probolinggo" class="studio-ref-img">
+                        </div>
+                        <div class="studio-ref-caption">
+                            <div class="studio-ref-icon" style="background:rgba(128,119,193,0.12)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="16" x2="12" y2="12"/>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p><strong>Objek Batik:</strong> Ornamen Bunga dan Ragam Hias Geometris Batik Probolinggo</p>
+                                <p><strong>Target Konsep:</strong> Rotasi dengan titik pusat P(x₀, y₀) dan sudut putar θ (90°, 180°, 270°)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Panel -->
+                <div class="studio-controls" id="studio-controls-2">
+                    <div class="ctrl-row">
+                        <!-- Motif Selector -->
+                        <div class="ctrl-section">
+                            <div class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v4m0 14v4m-9.5-9.5h4m14 0h4"/>
+                                    <path d="M4.22 4.22l2.83 2.83m9.9 9.9l2.83 2.83m-2.83-15.56l2.83-2.83m-15.56 15.56l-2.83 2.83"/>
+                                </svg>
+                                <span>Pilih Ornamen</span>
+                            </div>
+                            <div class="ctrl-btns">
+                                <button class="motif-btn active" data-motif="bunga" id="btn-motif-bunga">
+                                    <span class="motif-emoji">🌸</span> Bunga
+                                </button>
+                                <button class="motif-btn" data-motif="geometris" id="btn-motif-geometris">
+                                    <span class="motif-emoji">◆</span> Geometris
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Rotation Center -->
+                        <div class="ctrl-section">
+                            <div class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                    <circle cx="12" cy="12" r="2"/>
+                                    <circle cx="12" cy="12" r="7" stroke-dasharray="3 2"/>
+                                </svg>
+                                <span>Pusat Rotasi P(x₀, y₀)</span>
+                            </div>
+                            <div class="ctrl-inputs">
+                                <div class="input-group">
+                                    <label class="input-label">x₀</label>
+                                    <input type="number" id="rot-center-x" value="0" min="-8" max="8" class="num-input">
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label">y₀</label>
+                                    <input type="number" id="rot-center-y" value="0" min="-6" max="6" class="num-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Angle Selector -->
+                    <div class="ctrl-section ctrl-section-wide">
+                        <div class="ctrl-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+                                <path d="M22 12A10 10 0 0 0 12 2v10z"/>
+                            </svg>
+                            <span>Sudut Rotasi θ</span>
+                        </div>
+                        <div class="angle-btns" id="angle-btns">
+                            <button class="angle-btn active" data-angle="90" id="angle-90">90°</button>
+                            <button class="angle-btn" data-angle="180" id="angle-180">180°</button>
+                            <button class="angle-btn" data-angle="270" id="angle-270">270°</button>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="ctrl-section ctrl-section-reset" style="gap:8px">
+                        <button class="simulate-btn" id="btn-simulate-rotate">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                            Simulasikan Rotasi
+                        </button>
+                        <button class="reset-btn" id="btn-reset-rotate">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                            </svg>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rotation Step Counter -->
+                <div class="rot-step-bar" id="rot-step-bar">
+                    <span class="rot-step-label">Langkah Rotasi:</span>
+                    <div class="rot-steps" id="rot-steps">
+                        <span class="rot-step-dot active" data-step="0">Asli</span>
+                        <span class="rot-step-dot" data-step="1">1×</span>
+                        <span class="rot-step-dot" data-step="2">2×</span>
+                        <span class="rot-step-dot" data-step="3">3×</span>
+                        <span class="rot-step-dot" data-step="4">4×</span>
+                    </div>
+                </div>
+
+                <!-- Canvas -->
+                <div class="canvas-wrap canvas-wrap-sim" id="canvas-wrap-2">
+                    <canvas id="canvas-rotasi"></canvas>
+                </div>
+
+                <!-- Info Panel -->
+                <div class="studio-info-panel" id="studio-info-panel-2">
+                    <div class="info-coords">
+                        <div class="coord-box coord-original">
+                            <span class="coord-label">Posisi Asli</span>
+                            <span class="coord-value" id="rot-coord-original">P(3, 2)</span>
+                        </div>
+                        <div class="coord-arrow-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
+                            </svg>
+                        </div>
+                        <div class="coord-box coord-transformed">
+                            <span class="coord-label">Bayangan</span>
+                            <span class="coord-value" id="rot-coord-transformed">P'(3, 2)</span>
+                        </div>
+                    </div>
+                    <div class="info-formula" id="rot-info-formula">
+                        <span class="formula-tag">Rumus:</span>
+                        <span id="rot-formula-text">Tekan &ldquo;Simulasikan Rotasi&rdquo; untuk memutar ornamen</span>
+                    </div>
+                </div>
+
+                <!-- Instruksi -->
+                <div class="studio-instruksi">
+                    <div class="instruksi-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <h4>Instruksi Aktivitas Siswa</h4>
+                    </div>
+                    <ol class="instruksi-list">
+                        <li>Letakkan unit ornamen <strong>Bunga</strong> di titik tengah kanvas bidang Kartesius.</li>
+                        <li>Tentukan <strong>titik pusat rotasi</strong> pada koordinat P(x₀, y₀).</li>
+                        <li>Atur sudut rotasi sebesar <strong>θ = 90°</strong>, lalu tekan tombol <strong>Simulasikan Rotasi</strong>.</li>
+                        <li>Ulangi langkah rotasi 90° sebanyak <strong>4 kali</strong> hingga ornamen membentuk susunan radial melingkar yang utuh.</li>
+                    </ol>
+                </div>
+
+                </div><!-- end aktivitas-2 -->
+
+                <!-- ============ AKTIVITAS 3: DILATASI & TESELASI ============ -->
+                <div class="aktivitas-content" id="aktivitas-3" style="display:none">
+
+                <!-- Aktivitas Header -->
+                <div class="aktivitas-header">
+                    <div class="aktivitas-badge" style="background:linear-gradient(135deg,#2d8a6e,#1a6b50)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        Aktivitas 3
+                    </div>
+                    <h3 class="aktivitas-title">Skala &amp; Pengubinan Kain</h3>
+                    <p class="aktivitas-sub">(Dilatasi &amp; Teselasi)</p>
+                </div>
+
+                <!-- Reference Batik Image -->
+                <div class="studio-ref-wrap">
+                    <div class="studio-ref-card">
+                        <div class="studio-ref-img-wrap">
+                            <img src="assets/images/batik-isian-analisis.png" alt="Batik Isian &amp; Pola Kain Probolinggo" class="studio-ref-img">
+                        </div>
+                        <div class="studio-ref-caption">
+                            <div class="studio-ref-icon" style="background:rgba(45,138,110,0.12)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="16" x2="12" y2="12"/>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p><strong>Objek Batik:</strong> Pola isian (isif-isifan) dan latar bidang kain batik</p>
+                                <p><strong>Target Konsep:</strong> Dilatasi (faktor skala k), kesebangunan, kekongruenan, dan teselasi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Panel -->
+                <div class="studio-controls" id="studio-controls-3">
+                    <div class="ctrl-row">
+                        <!-- Motif Selector -->
+                        <div class="ctrl-section">
+                            <div class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                    <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                                </svg>
+                                <span>Pilih Motif Isian</span>
+                            </div>
+                            <div class="ctrl-btns">
+                                <button class="motif-btn active" data-motif="mangga" id="btn-isian-mangga">
+                                    <span class="motif-emoji">🥭</span> Mangga
+                                </button>
+                                <button class="motif-btn" data-motif="bunga" id="btn-isian-bunga">
+                                    <span class="motif-emoji">🌸</span> Bunga
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Tessellation Grid -->
+                        <div class="ctrl-section">
+                            <div class="ctrl-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
+                                    <line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>
+                                </svg>
+                                <span>Kisi Teselasi (m × n)</span>
+                            </div>
+                            <div class="ctrl-inputs">
+                                <div class="input-group">
+                                    <label class="input-label">m</label>
+                                    <input type="number" id="tesel-m" value="3" min="1" max="8" class="num-input">
+                                </div>
+                                <span style="color:var(--text-muted);font-weight:800">×</span>
+                                <div class="input-group">
+                                    <label class="input-label">n</label>
+                                    <input type="number" id="tesel-n" value="3" min="1" max="6" class="num-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scale Slider -->
+                    <div class="ctrl-section ctrl-section-wide">
+                        <div class="ctrl-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                <line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/>
+                            </svg>
+                            <span>Faktor Skala k = <strong id="display-k">1.0</strong></span>
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-row">
+                                <label class="slider-label">k <span class="slider-hint">(skala)</span></label>
+                                <input type="range" min="0.2" max="2.0" value="1.0" step="0.1" id="slider-k" class="sim-slider">
+                                <span class="slider-value" id="val-k">1.0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transformation Sequence -->
+                    <div class="ctrl-section ctrl-section-wide">
+                        <div class="ctrl-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+                            </svg>
+                            <span>Urutan Transformasi</span>
+                        </div>
+                        <div class="transform-seq">
+                            <button class="seq-btn active" id="seq-dilatasi">
+                                <span class="seq-icon">⊕</span> Dilatasi
+                            </button>
+                            <span class="seq-arrow">→</span>
+                            <button class="seq-btn" id="seq-translasi">
+                                <span class="seq-icon">↗</span> Translasi
+                            </button>
+                            <span class="seq-arrow">→</span>
+                            <button class="seq-btn" id="seq-refleksi">
+                                <span class="seq-icon">⇔</span> Refleksi
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="ctrl-section ctrl-section-reset" style="gap:8px">
+                        <button class="simulate-btn" id="btn-generate-pattern" style="background:linear-gradient(135deg,#2d8a6e,#F68D1C)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15">
+                                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                            </svg>
+                            Generate Pattern Repeat
+                        </button>
+                        <button class="reset-btn" id="btn-reset-tesel">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <polyline points="1 4 1 10 7 10"/>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                            </svg>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Canvas -->
+                <div class="canvas-wrap canvas-wrap-sim" id="canvas-wrap-3">
+                    <canvas id="canvas-teselasi"></canvas>
+                </div>
+
+                <!-- Info Panel -->
+                <div class="studio-info-panel" id="studio-info-panel-3">
+                    <div class="info-coords">
+                        <div class="coord-box coord-original">
+                            <span class="coord-label">Ukuran Asli</span>
+                            <span class="coord-value" id="tesel-size-orig">1.0×</span>
+                        </div>
+                        <div class="coord-arrow-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="14 7 19 12 14 17"/>
+                            </svg>
+                        </div>
+                        <div class="coord-box coord-transformed">
+                            <span class="coord-label">Setelah Skala</span>
+                            <span class="coord-value" id="tesel-size-scaled">1.0×</span>
+                        </div>
+                    </div>
+                    <div class="info-formula" id="tesel-info-formula">
+                        <span class="formula-tag">Info:</span>
+                        <span id="tesel-formula-text">Atur faktor skala dan kisi, lalu tekan Generate Pattern Repeat</span>
+                    </div>
+                </div>
+
+                <!-- Instruksi -->
+                <div class="studio-instruksi">
+                    <div class="instruksi-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                        <h4>Instruksi Aktivitas Siswa</h4>
+                    </div>
+                    <ol class="instruksi-list">
+                        <li>Ubah <strong>Faktor Skala (k)</strong> menjadi 0,5 untuk memperkecil ukuran motif isian latar.</li>
+                        <li>Susun kombinasi aturan transformasi secara berurutan: <strong>Dilatasi → Translasi → Refleksi</strong>.</li>
+                        <li>Klik tombol <strong>Generate Pattern Repeat</strong> untuk memproyeksikan pengulangan motif ke seluruh lembar kain.</li>
+                        <li>Evaluasi apakah seluruh unit motif pada lembar kain saling <strong>kongruen</strong> dan teratur.</li>
+                    </ol>
+                </div>
+
+                </div><!-- end aktivitas-3 -->
 
                 <!-- Prev/Next navigation -->
                 <div class="materi-nav">
