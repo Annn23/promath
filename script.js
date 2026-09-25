@@ -170,9 +170,153 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panduanModal.classList.contains('active')) closeModal(); });
     function closeModal() { panduanModal.classList.remove('active'); }
 
-    // ==== GALERI ETNOMATEMATIKA ====
-    // Galeri is now static Materi Awal content (Translasi, Refleksi, Rotasi, Dilatasi)
-    // No dynamic loading needed
+    // ---- Tombol MULAI → Beranda ----
+    const btnMulai = document.getElementById('btn-mulai');
+    if (btnMulai) {
+        btnMulai.addEventListener('click', () => {
+            showPage('page-beranda');
+            showToast('Selamat datang! 🎉');
+        });
+    }
+
+    // ---- Enter pada input nama → Beranda ----
+    if (namaInput) {
+        namaInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                showPage('page-beranda');
+                showToast('Selamat datang! 🎉');
+            }
+        });
+    }
+
+    // ==== GALERI ETNOMATEMATIKA - SLIDER ====
+    const galeriSlides = document.querySelectorAll('.galeri-slide');
+    const galeriDotsContainer = document.getElementById('galeri-dots');
+    const galeriPrevBtn = document.getElementById('galeri-prev');
+    const galeriNextBtn = document.getElementById('galeri-next');
+    const galeriPrevBtnBottom = document.getElementById('galeri-prev-bottom');
+    const galeriNextBtnBottom = document.getElementById('galeri-next-bottom');
+    const galeriCurrentEl = document.getElementById('galeri-current');
+    const galeriTotalEl = document.getElementById('galeri-total');
+    const galeriCurrentBottomEl = document.getElementById('galeri-current-bottom');
+    const galeriTotalBottomEl = document.getElementById('galeri-total-bottom');
+    let galeriCurrentSlide = 0;
+
+    const galeriSlideNames = [
+        'Batik Probolinggo',
+        'Batik Mangga',
+        'Batik Bunga',
+        'Batik Gurda',
+        'Batik Daun',
+        'Batik Teratai',
+        'Batik Anggur',
+        'Batik Ayam',
+        'Batik Kupu-Kupu',
+        'Batik Ketupat'
+    ];
+
+    // Generate dot indicators
+    if (galeriDotsContainer && galeriSlides.length > 0) {
+        galeriSlides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'galeri-dot' + (i === 0 ? ' galeri-dot-active' : '');
+            dot.setAttribute('data-slide', i);
+            dot.setAttribute('aria-label', `Slide ${i + 1}: ${galeriSlideNames[i] || ''}`);
+
+            // Add tooltip label
+            const label = document.createElement('span');
+            label.className = 'galeri-dot-label';
+            label.textContent = galeriSlideNames[i] || `Slide ${i + 1}`;
+            dot.appendChild(label);
+
+            dot.addEventListener('click', () => goToGaleriSlide(i));
+            galeriDotsContainer.appendChild(dot);
+        });
+    }
+
+    // Update total counts
+    if (galeriTotalEl) galeriTotalEl.textContent = galeriSlides.length;
+    if (galeriTotalBottomEl) galeriTotalBottomEl.textContent = galeriSlides.length;
+
+    function goToGaleriSlide(index) {
+        if (index < 0 || index >= galeriSlides.length || index === galeriCurrentSlide) return;
+
+        // Hide current slide
+        galeriSlides[galeriCurrentSlide].classList.remove('galeri-slide-active');
+
+        // Show new slide
+        galeriCurrentSlide = index;
+        const newSlide = galeriSlides[galeriCurrentSlide];
+        newSlide.classList.remove('galeri-slide-active');
+        // Force reflow for animation restart
+        void newSlide.offsetWidth;
+        newSlide.classList.add('galeri-slide-active');
+
+        updateGaleriControls();
+
+        // Scroll the slider container into view smoothly
+        const sliderContainer = document.getElementById('galeri-slider');
+        if (sliderContainer) {
+            sliderContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function updateGaleriControls() {
+        const idx = galeriCurrentSlide;
+        const total = galeriSlides.length;
+
+        // Update counters
+        if (galeriCurrentEl) galeriCurrentEl.textContent = idx + 1;
+        if (galeriCurrentBottomEl) galeriCurrentBottomEl.textContent = idx + 1;
+
+        // Update buttons
+        if (galeriPrevBtn) galeriPrevBtn.disabled = idx === 0;
+        if (galeriNextBtn) galeriNextBtn.disabled = idx === total - 1;
+        if (galeriPrevBtnBottom) galeriPrevBtnBottom.disabled = idx === 0;
+        if (galeriNextBtnBottom) galeriNextBtnBottom.disabled = idx === total - 1;
+
+        // Update dots
+        const dots = galeriDotsContainer ? galeriDotsContainer.querySelectorAll('.galeri-dot') : [];
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('galeri-dot-active', i === idx);
+        });
+    }
+
+    // Button event listeners
+    if (galeriPrevBtn) galeriPrevBtn.addEventListener('click', () => goToGaleriSlide(galeriCurrentSlide - 1));
+    if (galeriNextBtn) galeriNextBtn.addEventListener('click', () => goToGaleriSlide(galeriCurrentSlide + 1));
+    if (galeriPrevBtnBottom) galeriPrevBtnBottom.addEventListener('click', () => goToGaleriSlide(galeriCurrentSlide - 1));
+    if (galeriNextBtnBottom) galeriNextBtnBottom.addEventListener('click', () => goToGaleriSlide(galeriCurrentSlide + 1));
+
+    // Keyboard navigation (only when galeri page is visible)
+    document.addEventListener('keydown', (e) => {
+        const galeriPage = document.getElementById('page-materi-galeri');
+        if (!galeriPage || !galeriPage.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft') goToGaleriSlide(galeriCurrentSlide - 1);
+        if (e.key === 'ArrowRight') goToGaleriSlide(galeriCurrentSlide + 1);
+    });
+
+    // Touch/Swipe support for slides
+    let galeriTouchStartX = 0;
+    let galeriTouchEndX = 0;
+    const galeriTrack = document.getElementById('galeri-track');
+    if (galeriTrack) {
+        galeriTrack.addEventListener('touchstart', (e) => {
+            galeriTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        galeriTrack.addEventListener('touchend', (e) => {
+            galeriTouchEndX = e.changedTouches[0].screenX;
+            const diff = galeriTouchStartX - galeriTouchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) goToGaleriSlide(galeriCurrentSlide + 1); // swipe left → next
+                else goToGaleriSlide(galeriCurrentSlide - 1); // swipe right → prev
+            }
+        }, { passive: true });
+    }
+
+    // Initialize controls state
+    updateGaleriControls();
 
     // ==== STUDIO SIMULASI INTERAKTIF - TRANSFORMASI GEOMETRI ====
 
@@ -1553,22 +1697,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     shuffleAndPick();
 
+    // Track which quiz slots have been answered in the current session
+    let answeredSlots = new Set();
+
     function loadZona(i) {
         const realIdx = activeQuiz[i];
         const d = soalData[realIdx];
-        zonaTitle.textContent = d.title + ` (Soal ${i + 1}/${activeQuiz.length})`; soalImage.src = d.image;
+        // No question number in title since questions are shuffled — just show topic + progress
+        const answeredCount = answeredSlots.size;
+        zonaTitle.textContent = `Zona Tantangan (${answeredCount}/${activeQuiz.length} dijawab)`;
+        soalImage.src = d.image;
         soalText.innerHTML = `<p>${d.soal}</p>`;
         zonaStartTime = Date.now();
         jawabanOptions.innerHTML = '';
         d.options.forEach((opt, j) => {
             const btn = document.createElement('button');
             btn.className = 'jawaban-option'; btn.textContent = opt;
-            btn.addEventListener('click', () => handleAnswer(btn, j, d.correct, realIdx));
+            // If already answered this slot, show the result
+            if (answeredSlots.has(i)) {
+                btn.style.pointerEvents = 'none';
+                if (j === d.correct) btn.classList.add('correct');
+            } else {
+                btn.addEventListener('click', () => handleAnswer(btn, j, d.correct, realIdx, i));
+            }
             jawabanOptions.appendChild(btn);
         });
     }
 
-    function handleAnswer(btn, sel, cor, soalIdx) {
+    function handleAnswer(btn, sel, cor, soalIdx, slotIdx) {
         const elapsed = zonaStartTime ? Math.round((Date.now() - zonaStartTime) / 1000) : 0;
         const allBtns = jawabanOptions.querySelectorAll('.jawaban-option');
         allBtns.forEach(b => { b.style.pointerEvents = 'none'; b.classList.remove('selected'); });
@@ -1584,6 +1740,35 @@ document.addEventListener('DOMContentLoaded', () => {
         sd.history.push(skor);
         sd.skorTerakhir = skor;
         sd.waktuTerakhir = elapsed + 's';
+
+        // Mark this slot as answered
+        answeredSlots.add(slotIdx);
+
+        // Update title with new progress
+        zonaTitle.textContent = `Zona Tantangan (${answeredSlots.size}/${activeQuiz.length} dijawab)`;
+
+        // Check if all questions are answered → navigate to Dashboard
+        if (answeredSlots.size >= activeQuiz.length) {
+            setTimeout(() => {
+                showToast('Semua soal selesai! Lihat hasil di Dashboard 🎉');
+                setTimeout(() => {
+                    showPage('page-dashboard');
+                }, 1200);
+            }, 1000);
+        } else {
+            // Auto-advance to next unanswered question after delay
+            setTimeout(() => {
+                let nextSlot = (slotIdx + 1) % activeQuiz.length;
+                // Find the next unanswered slot
+                let tried = 0;
+                while (answeredSlots.has(nextSlot) && tried < activeQuiz.length) {
+                    nextSlot = (nextSlot + 1) % activeQuiz.length;
+                    tried++;
+                }
+                zonaIndex = nextSlot;
+                loadZona(zonaIndex);
+            }, 1500);
+        }
     }
 
     document.getElementById('btn-zona-prev').addEventListener('click', () => { zonaIndex = (zonaIndex - 1 + activeQuiz.length) % activeQuiz.length; loadZona(zonaIndex); });

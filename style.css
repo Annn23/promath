@@ -267,6 +267,67 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     box-shadow: 0 6px 20px rgba(246,141,28,0.3);
 }
 
+.btn-mulai {
+    width: 100%;
+    max-width: 400px;
+    padding: 18px 32px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--orange), var(--orange-light), var(--orange));
+    background-size: 200% 200%;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    animation: btnMulaiGlow 3s ease-in-out infinite;
+    box-shadow: 0 4px 20px rgba(246,141,28,0.35);
+}
+
+.btn-mulai::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-mulai:hover::before {
+    left: 100%;
+}
+
+.btn-mulai:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(246,141,28,0.45);
+}
+
+.btn-mulai:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 10px rgba(246,141,28,0.3);
+}
+
+.btn-mulai svg {
+    flex-shrink: 0;
+    fill: currentColor;
+    stroke: none;
+}
+
+@keyframes btnMulaiGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
 .welcome-text { text-align: center; max-width: 520px; }
 
 .welcome-bold {
@@ -588,6 +649,321 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     background: rgba(128, 119, 193, 0.1);
     padding: 1px 5px;
     border-radius: 4px;
+}
+
+/* ================================================
+   GALERI SLIDER (Slide-based Batik Analysis)
+   ================================================ */
+.galeri-slider-container {
+    margin: 8px 0 24px;
+    background: linear-gradient(135deg, rgba(128,119,193,0.03), rgba(246,141,28,0.03));
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+/* Slider Header */
+.galeri-slider-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+    color: white;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.galeri-slider-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.galeri-slider-title-row svg {
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+/* Slider Navigation Buttons */
+.galeri-slider-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.galeri-slider-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.galeri-slider-btn:hover {
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.5);
+    transform: scale(1.08);
+}
+
+.galeri-slider-btn:active {
+    transform: scale(0.95);
+}
+
+.galeri-slider-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.galeri-slider-btn:disabled:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
+    transform: none;
+}
+
+/* Counter */
+.galeri-slider-counter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    min-width: 48px;
+    justify-content: center;
+}
+
+.galeri-counter-current {
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.galeri-counter-sep {
+    opacity: 0.5;
+}
+
+.galeri-counter-total {
+    opacity: 0.7;
+}
+
+/* Slider Dots */
+.galeri-slider-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px 10px;
+    flex-wrap: wrap;
+}
+
+.galeri-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    position: relative;
+}
+
+.galeri-dot:hover {
+    background: var(--purple-light);
+    transform: scale(1.2);
+}
+
+.galeri-dot.galeri-dot-active {
+    background: var(--purple);
+    border-color: var(--purple-light);
+    transform: scale(1.25);
+    box-shadow: 0 0 0 3px rgba(128,119,193,0.2);
+}
+
+.galeri-dot-label {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--purple-dark);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.galeri-dot:hover .galeri-dot-label {
+    opacity: 1;
+}
+
+/* Slider Track */
+.galeri-slider-track {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Individual Slides */
+.galeri-slide {
+    display: none;
+    animation: galeriSlideIn 0.4s ease forwards;
+}
+
+.galeri-slide-active {
+    display: block;
+}
+
+@keyframes galeriSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes galeriSlideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+}
+
+/* Bottom Navigation */
+.galeri-slider-bottom-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px 24px 20px;
+    border-top: 2px solid var(--border-light);
+    background: linear-gradient(135deg, rgba(128,119,193,0.04), rgba(246,141,28,0.04));
+}
+
+.galeri-slider-bottom-nav .galeri-slider-btn {
+    width: auto;
+    border-radius: var(--radius);
+    padding: 8px 16px;
+    background: var(--purple);
+    border-color: var(--purple);
+    color: white;
+    font-size: 0.82rem;
+    font-weight: 600;
+    gap: 6px;
+}
+
+.galeri-slider-bottom-nav .galeri-slider-btn:hover {
+    background: var(--purple-dark);
+    border-color: var(--purple-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(128,119,193,0.3);
+}
+
+.galeri-slider-bottom-nav .galeri-slider-btn:disabled {
+    background: var(--border);
+    border-color: var(--border);
+    color: var(--text-light);
+    box-shadow: none;
+    transform: none;
+}
+
+.galeri-slider-bottom-nav .galeri-slider-counter {
+    color: var(--text-dark);
+}
+
+.galeri-slider-bottom-nav .galeri-counter-current {
+    background: var(--purple);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.galeri-slider-bottom-nav .galeri-counter-total {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+.galeri-slider-bottom-nav .galeri-counter-sep {
+    color: var(--text-light);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .galeri-slider-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 16px;
+    }
+
+    .galeri-slider-title-row {
+        font-size: 0.85rem;
+    }
+
+    .galeri-slider-nav {
+        align-self: flex-end;
+    }
+
+    .galeri-slider-dots {
+        padding: 10px 12px 8px;
+        gap: 6px;
+    }
+
+    .galeri-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .galeri-slider-bottom-nav {
+        padding: 12px 16px 16px;
+        gap: 10px;
+    }
+
+    .galeri-slider-bottom-nav .galeri-slider-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .galeri-slider-bottom-nav .galeri-slider-btn span {
+        display: none;
+    }
+
+    .galeri-slider-bottom-nav .galeri-slider-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        padding: 0;
+    }
 }
 
 /* ================================================
@@ -2081,6 +2457,7 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     .logo-circle { width: 110px; height: 110px; }
     .batik-side { max-width: 80px; }
     #nama-input, .btn-panduan { max-width: 100%; padding: 14px 16px; font-size: 0.88rem; }
+    .btn-mulai { max-width: 100%; padding: 14px 16px; font-size: 0.95rem; }
     .welcome-bold { font-size: 0.92rem; }
     .welcome-sub { font-size: 0.85rem; }
 

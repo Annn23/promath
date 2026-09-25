@@ -64,6 +64,14 @@
             <!-- Panduan Fitur Button -->
             <button class="btn-panduan" id="btn-panduan">PANDUAN FITUR</button>
 
+            <!-- Tombol Mulai / Masuk -->
+            <button class="btn-mulai" id="btn-mulai">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <span>MULAI</span>
+            </button>
+
             <!-- Welcome Text -->
             <div class="welcome-text">
                 <p class="welcome-bold">Selamat Datang di PROMATH-GUI!</p>
@@ -293,7 +301,45 @@
                     </div>
                 </div>
 
-                <!-- ======== Analisis Transformasi pada Batik ======== -->
+                <!-- ======== SLIDER: Analisis Transformasi pada Batik ======== -->
+                <div class="galeri-slider-container" id="galeri-slider">
+                    <!-- Slider Header -->
+                    <div class="galeri-slider-header">
+                        <div class="galeri-slider-title-row">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                            <span>Analisis Transformasi Geometri pada Batik</span>
+                        </div>
+                        <div class="galeri-slider-nav">
+                            <button class="galeri-slider-btn galeri-slider-prev" id="galeri-prev" aria-label="Slide sebelumnya">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+                                    <polyline points="15 18 9 12 15 6"/>
+                                </svg>
+                            </button>
+                            <div class="galeri-slider-counter" id="galeri-counter">
+                                <span class="galeri-counter-current" id="galeri-current">1</span>
+                                <span class="galeri-counter-sep">/</span>
+                                <span class="galeri-counter-total" id="galeri-total">10</span>
+                            </div>
+                            <button class="galeri-slider-btn galeri-slider-next" id="galeri-next" aria-label="Slide berikutnya">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+                                    <polyline points="9 18 15 12 9 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Slider Dots -->
+                    <div class="galeri-slider-dots" id="galeri-dots"></div>
+
+                    <!-- Slider Track -->
+                    <div class="galeri-slider-track" id="galeri-track">
+
+                    <!-- SLIDE 1 -->
+                    <div class="galeri-slide galeri-slide-active" data-slide="0">
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
@@ -398,7 +444,10 @@
 
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 2 -->
+                    <div class="galeri-slide" data-slide="1">
                 <!-- ======== Analisis Transformasi pada Batik Mangga ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -492,7 +541,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 3 -->
+                    <div class="galeri-slide" data-slide="2">
                 <!-- ======== Analisis Transformasi pada Batik Bunga ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -600,7 +652,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 4 -->
+                    <div class="galeri-slide" data-slide="3">
                 <!-- ======== Analisis Transformasi pada Batik Gurda ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -686,7 +741,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 5 -->
+                    <div class="galeri-slide" data-slide="4">
                 <!-- ======== Analisis Transformasi pada Batik Daun ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -804,7 +862,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 6 -->
+                    <div class="galeri-slide" data-slide="5">
                 <!-- ======== Analisis Transformasi pada Batik Teratai ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -899,7 +960,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 7 -->
+                    <div class="galeri-slide" data-slide="6">
                 <!-- ======== Analisis Transformasi pada Batik Anggur ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -988,7 +1052,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 8 -->
+                    <div class="galeri-slide" data-slide="7">
                 <!-- ======== Analisis Transformasi pada Batik Ayam ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -1083,7 +1150,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 9 -->
+                    <div class="galeri-slide" data-slide="8">
                 <!-- ======== Analisis Transformasi pada Batik Kupu-Kupu ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -1171,7 +1241,10 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
+                    <!-- SLIDE 10 -->
+                    <div class="galeri-slide" data-slide="9">
                 <!-- ======== Analisis Transformasi pada Batik Ketupat ======== -->
                 <div class="galeri-analisis-section">
                     <div class="galeri-analisis-label">
@@ -1249,6 +1322,33 @@
                         </div>
                     </div>
                 </div>
+                    </div>
+                    <!-- END of slider track -->
+                    </div>
+
+                    <!-- Bottom Navigation (duplicated for easy access) -->
+                    <div class="galeri-slider-bottom-nav">
+                        <button class="galeri-slider-btn galeri-slider-prev" id="galeri-prev-bottom" aria-label="Slide sebelumnya">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                            <span>Sebelumnya</span>
+                        </button>
+                        <div class="galeri-slider-counter" id="galeri-counter-bottom">
+                            <span class="galeri-counter-current" id="galeri-current-bottom">1</span>
+                            <span class="galeri-counter-sep">/</span>
+                            <span class="galeri-counter-total" id="galeri-total-bottom">10</span>
+                        </div>
+                        <button class="galeri-slider-btn galeri-slider-next" id="galeri-next-bottom" aria-label="Slide berikutnya">
+                            <span>Berikutnya</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+                <!-- END of galeri-slider-container -->
 
                 <!-- Footer -->
                 <div class="materi-footer">
