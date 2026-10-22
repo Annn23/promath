@@ -651,6 +651,32 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     border-radius: 4px;
 }
 
+/* Notasi vektor kolom translasi: (a di atas, b di bawah) */
+.translasi-vektor {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vektor-wrap {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.vektor-col {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+    margin: 0 1px;
+    font-size: 0.9em;
+}
+
+.vektor-col span {
+    display: block;
+    padding: 0 2px;
+}
+
 .formula-list {
     margin: 6px 0 0 0;
     padding-left: 18px;
