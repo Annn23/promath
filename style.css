@@ -651,6 +651,86 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     border-radius: 4px;
 }
 
+.formula-list {
+    margin: 6px 0 0 0;
+    padding-left: 18px;
+    list-style: disc;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+.formula-list li {
+    margin-bottom: 4px;
+}
+
+.materi-source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    opacity: 0.8;
+}
+
+/* Tabel Rotasi */
+.rotasi-tabel-wrap {
+    overflow-x: auto;
+    margin: 12px 0 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(128, 193, 130, 0.35);
+}
+
+.rotasi-tabel {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    color: var(--text-dark);
+    min-width: 380px;
+}
+
+.rotasi-tabel thead tr {
+    background: linear-gradient(135deg, #3d7a45, #5a9e62);
+    color: #fff;
+}
+
+.rotasi-tabel thead th {
+    padding: 9px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.rotasi-tabel tbody tr:nth-child(odd) {
+    background: rgba(128, 193, 130, 0.08);
+}
+
+.rotasi-tabel tbody tr:nth-child(even) {
+    background: rgba(128, 193, 130, 0.18);
+}
+
+.rotasi-tabel tbody tr:hover {
+    background: rgba(128, 193, 130, 0.28);
+}
+
+.rotasi-tabel tbody td {
+    padding: 8px 12px;
+    text-align: center;
+    border: 1px solid rgba(128, 193, 130, 0.25);
+    line-height: 1.5;
+}
+
+.rotasi-tabel tbody td strong {
+    color: #2d6b34;
+    font-weight: 700;
+}
+
+
+
 /* ================================================
    GALERI SLIDER (Slide-based Batik Analysis)
    ================================================ */

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Automata Aplikasi PROMATH GUI - Diagram state machine interaktif yang menggambarkan alur navigasi aplikasi pembelajaran batik dan matematika.">
+    <title>Automata Aplikasi - PROMATH GUI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #F68D1C;
+            --orange-dark: #d97a10;
+            --orange-light: #fca64d;
+            --purple: #8077C1;
+            --purple-dark: #6960a8;
+            --purple-light: #9b93d1;
+            --gray: #F6F7F1;
+            --yellow: #EEE78E;
+            --white: #ffffff;
+            --text-dark: #2d2a3e;
+            --text-muted: #6b6880;
+            --shadow-lg: 0 8px 32px rgba(45,42,62,0.14);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(170deg, #c8b8e8 0%, #e8d5f0 20%, #f5e0d0 45%, #f8c89a 70%, #f6a050 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.04em;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Canvas Container */
+        .canvas-container {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 28px;
+            border: 2px solid rgba(255,255,255,0.5);
+            box-shadow: 0 8px 40px rgba(45,42,62,0.12), 0 2px 12px rgba(246,141,28,0.08);
+            padding: 32px;
+            width: 100%;
+            max-width: 1200px;
+            overflow: auto;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            min-width: 1100px;
+            min-height: 780px;
+        }
+
+        /* SVG Canvas */
+        .automata-svg {
+            width: 100%;
+            height: 100%;
+            min-width: 1100px;
+            min-height: 780px;
+        }
+
+        /* Legend */
+        .legend-container {
+            margin-top: 24px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(18px);
+            border-radius: var(--radius-lg);
+            border: 2px solid rgba(255,255,255,0.5);
+            box-shadow: var(--shadow-lg);
+            padding: 24px 32px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .legend-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .legend-line {
+            width: 50px;
+            height: 3px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .legend-line::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 8px solid currentColor;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+
+        .legend-line.black {
+            background: #2d2a3e;
+            color: #2d2a3e;
+        }
+
+        .legend-line.red {
+            background: #e53e3e;
+            color: #e53e3e;
+        }
+
+        .legend-line.blue {
+            background: #4299e1;
+            color: #4299e1;
+        }
+
+        /* Info Panel */
+        .info-panel {
+            margin-top: 24px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(18px);
+            border-radius: var(--radius-lg);
+            border: 2px solid rgba(255,255,255,0.5);
+            box-shadow: var(--shadow-lg);
+            padding: 24px 32px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .info-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .state-info {
+            display: none;
+            padding: 16px;
+            background: var(--gray);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--orange);
+        }
+
+        .state-info.active {
+            display: block;
+            animation: fadeSlideIn 0.3s ease;
+        }
+
+        .state-info h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .state-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .state-info .transitions {
+            margin-top: 12px;
+        }
+
+        .state-info .transitions span {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(246,141,28,0.12);
+            border: 1px solid rgba(246,141,28,0.3);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 3px 4px 3px 0;
+            color: var(--orange-dark);
+        }
+
+        .default-info {
+            padding: 16px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            background: rgba(45,42,62,0.95);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Back button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+            color: white;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            margin-bottom: 16px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(246,141,28,0.3);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(246,141,28,0.4);
+        }
+
+        /* SVG Styling */
+        .state-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-node:hover .node-circle-outer {
+            filter: drop-shadow(0 0 12px rgba(76,175,80,0.5));
+        }
+
+        .state-node:hover .node-circle-inner {
+            fill: #81c784;
+        }
+
+        .state-node.active-state .node-circle-outer {
+            filter: drop-shadow(0 0 16px rgba(246,141,28,0.6));
+        }
+
+        .state-node.active-state .node-circle-inner {
+            fill: var(--orange);
+        }
+
+        /* Group box */
+        .group-box {
+            fill: none;
+            stroke: #e53e3e;
+            stroke-width: 2;
+            rx: 12;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .canvas-container { padding: 16px; }
+            .header h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Kembali ke PROMATH GUI
+    </a>
+
+    <div class="header">
+        <h1>Automata Aplikasi</h1>
+        <p>Diagram State Machine - Alur Navigasi PROMATH GUI</p>
+    </div>
+
+    <!-- Canvas Container -->
+    <div class="canvas-container">
+        <div class="canvas-wrapper">
+            <svg class="automata-svg" viewBox="0 0 1100 780" xmlns="http://www.w3.org/2000/svg">
+                <!-- Defs: Arrowheads & Gradients -->
+                <defs>
+                    <!-- Black arrow (forward) -->
+                    <marker id="arrow-black" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#2d2a3e"/>
+                    </marker>
+                    <!-- Red arrow (back button) -->
+                    <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#e53e3e"/>
+                    </marker>
+                    <!-- Blue arrow (navigation) -->
+                    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#4299e1"/>
+                    </marker>
+                    <!-- Node gradient -->
+                    <radialGradient id="node-grad" cx="40%" cy="35%" r="60%">
+                        <stop offset="0%" stop-color="#a5d6a7"/>
+                        <stop offset="50%" stop-color="#66bb6a"/>
+                        <stop offset="100%" stop-color="#43a047"/>
+                    </radialGradient>
+                    <radialGradient id="node-grad-start" cx="40%" cy="35%" r="60%">
+                        <stop offset="0%" stop-color="#a5d6a7"/>
+                        <stop offset="50%" stop-color="#4caf50"/>
+                        <stop offset="100%" stop-color="#2e7d32"/>
+                    </radialGradient>
+                    <!-- Glow filter -->
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                    <!-- Pulse animation -->
+                    <filter id="pulse-glow">
+                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <!-- ====== GROUP BOX: Beranda sub-pages ====== -->
+                <rect x="825" y="60" width="230" height="490" rx="16" ry="16"
+                      fill="rgba(229,62,62,0.04)" stroke="#e53e3e" stroke-width="2.5" stroke-dasharray="0"/>
+
+                <!-- ====== TRANSITIONS (Black - Forward) ====== -->
+                <!-- Start → Splash Screen -->
+                <line x1="110" y1="340" x2="170" y2="340" stroke="#2d2a3e" stroke-width="2.5" marker-end="url(#arrow-black)"/>
+                <!-- Splash Screen → Login Page -->
+                <line x1="250" y1="340" x2="310" y2="340" stroke="#2d2a3e" stroke-width="2.5" marker-end="url(#arrow-black)"/>
+                <!-- Login Page → Main Menu -->
+                <line x1="390" y1="340" x2="450" y2="340" stroke="#2d2a3e" stroke-width="2.5" marker-end="url(#arrow-black)"/>
+
+                <!-- Main Menu → Beranda -->
+                <path d="M 530 340 L 600 340 L 600 200 L 660 200" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+                <!-- Main Menu → Statistik -->
+                <path d="M 530 340 L 580 340 L 580 370 L 660 370" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+                <!-- Main Menu → Ruang Diskusi -->
+                <path d="M 530 340 L 570 340 L 570 520 L 660 520" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+                <!-- Main Menu → Akun -->
+                <path d="M 530 340 L 560 340 L 560 650 L 660 650" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+
+                <!-- Beranda → Materi -->
+                <path d="M 730 200 L 780 200 L 780 120 L 860 120" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+                <!-- Beranda → Soal -->
+                <path d="M 730 200 L 790 200 L 790 230 L 860 230" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+                <!-- Beranda → Asesmen -->
+                <path d="M 730 200 L 795 200 L 795 360 L 860 360" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+                <!-- Beranda → Report Belajar -->
+                <path d="M 730 200 L 800 200 L 800 480 L 860 480" stroke="#2d2a3e" stroke-width="2.5" fill="none" marker-end="url(#arrow-black)"/>
+
+                <!-- ====== TRANSITIONS (Red - Back button) ====== -->
+                <!-- Materi → Beranda -->
+                <path d="M 940 100 L 960 100 L 960 80 L 710 80 L 710 170" stroke="#e53e3e" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+                <!-- Soal → Beranda -->
+                <path d="M 940 210 L 970 210 L 970 75 L 700 75 L 700 170" stroke="#e53e3e" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+                <!-- Asesmen → Beranda -->
+                <path d="M 940 340 L 975 340 L 975 70 L 690 70 L 690 170" stroke="#e53e3e" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+                <!-- Report Belajar → Beranda -->
+                <path d="M 940 460 L 980 460 L 980 65 L 680 65 L 680 170" stroke="#e53e3e" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+
+                <!-- ====== TRANSITIONS (Blue - Navigation button / back to Main Menu) ====== -->
+                <!-- Beranda → Main Menu -->
+                <path d="M 670 200 Q 620 200 610 250 Q 598 310 510 310 Q 505 310 500 315" stroke="#4299e1" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" stroke-dasharray="0"/>
+                <!-- Statistik → Main Menu -->
+                <path d="M 670 370 Q 610 400 560 400 Q 520 400 505 370 Q 500 360 495 355" stroke="#4299e1" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" stroke-dasharray="0"/>
+                <!-- Ruang Diskusi → Main Menu -->
+                <path d="M 670 520 Q 600 530 540 480 Q 510 450 495 390 Q 490 370 490 355" stroke="#4299e1" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" stroke-dasharray="0"/>
+                <!-- Akun → Main Menu -->
+                <path d="M 670 650 Q 580 660 530 580 Q 500 530 485 420 Q 480 380 485 360" stroke="#4299e1" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" stroke-dasharray="0"/>
+
+                <!-- ====== STATE NODES ====== -->
+
+                <!-- Start (double circle for initial state) -->
+                <g class="state-node" data-state="start" transform="translate(80, 340)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="30" fill="none" stroke="#2e7d32" stroke-width="3"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="24" fill="url(#node-grad-start)" stroke="#388e3c" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="16" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <!-- Shine -->
+                    <ellipse cx="-6" cy="-8" rx="8" ry="5" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -6 -8)"/>
+                    <text x="0" y="52" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Start</text>
+                </g>
+
+                <!-- Splash Screen -->
+                <g class="state-node" data-state="splash" transform="translate(210, 340)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="28" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="22" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-7" rx="7" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -5 -7)"/>
+                    <text x="0" y="48" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="13" fill="#2d2a3e">Splash</text>
+                    <text x="0" y="64" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="600" font-size="12" fill="#6b6880">Screen</text>
+                </g>
+
+                <!-- Login Page -->
+                <g class="state-node" data-state="login" transform="translate(350, 340)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="28" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="22" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-7" rx="7" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -5 -7)"/>
+                    <text x="0" y="48" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="13" fill="#2d2a3e">Login</text>
+                    <text x="0" y="64" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="600" font-size="12" fill="#6b6880">Page</text>
+                </g>
+
+                <!-- Main Menu -->
+                <g class="state-node" data-state="mainmenu" transform="translate(490, 340)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="30" fill="none" stroke="#388e3c" stroke-width="3"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="24" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="16" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-6" cy="-8" rx="8" ry="5" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -6 -8)"/>
+                    <text x="0" y="52" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="13" fill="#2d2a3e">Main</text>
+                    <text x="0" y="68" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="600" font-size="12" fill="#6b6880">Menu</text>
+                </g>
+
+                <!-- Beranda -->
+                <g class="state-node" data-state="beranda" transform="translate(700, 200)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="28" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="22" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-7" rx="7" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -5 -7)"/>
+                    <text x="0" y="-40" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Beranda</text>
+                </g>
+
+                <!-- Statistik -->
+                <g class="state-node" data-state="statistik" transform="translate(700, 370)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="28" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="22" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-7" rx="7" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -5 -7)"/>
+                    <text x="0" y="48" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Statistik</text>
+                </g>
+
+                <!-- Ruang Diskusi -->
+                <g class="state-node" data-state="diskusi" transform="translate(700, 520)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="28" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="22" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-7" rx="7" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -5 -7)"/>
+                    <text x="0" y="48" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="13" fill="#2d2a3e">Ruang</text>
+                    <text x="0" y="64" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="600" font-size="12" fill="#6b6880">Diskusi</text>
+                </g>
+
+                <!-- Akun -->
+                <g class="state-node" data-state="akun" transform="translate(700, 650)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="28" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="22" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-5" cy="-7" rx="7" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -5 -7)"/>
+                    <text x="0" y="48" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Akun</text>
+                </g>
+
+                <!-- Materi (inside red box) -->
+                <g class="state-node" data-state="materi" transform="translate(940, 120)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="26" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="20" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="13" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-4" cy="-6" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -4 -6)"/>
+                    <text x="55" y="5" text-anchor="start" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Materi</text>
+                </g>
+
+                <!-- Soal (inside red box) -->
+                <g class="state-node" data-state="soal" transform="translate(940, 230)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="26" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="20" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="13" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-4" cy="-6" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -4 -6)"/>
+                    <text x="55" y="5" text-anchor="start" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Soal</text>
+                </g>
+
+                <!-- Asesmen (inside red box) -->
+                <g class="state-node" data-state="asesmen" transform="translate(940, 360)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="26" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="20" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="13" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-4" cy="-6" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -4 -6)"/>
+                    <text x="55" y="5" text-anchor="start" font-family="Outfit, sans-serif" font-weight="700" font-size="14" fill="#2d2a3e">Asesmen</text>
+                </g>
+
+                <!-- Report Belajar (inside red box) -->
+                <g class="state-node" data-state="report" transform="translate(940, 480)">
+                    <circle class="node-circle-outer" cx="0" cy="0" r="26" fill="none" stroke="#388e3c" stroke-width="2.5"/>
+                    <circle class="node-circle-inner" cx="0" cy="0" r="20" fill="url(#node-grad)" stroke="#43a047" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="13" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                    <ellipse cx="-4" cy="-6" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-20 -4 -6)"/>
+                    <text x="55" y="-2" text-anchor="start" font-family="Outfit, sans-serif" font-weight="700" font-size="13" fill="#2d2a3e">Report</text>
+                    <text x="55" y="16" text-anchor="start" font-family="Outfit, sans-serif" font-weight="600" font-size="12" fill="#6b6880">Belajar</text>
+                </g>
+
+                <!-- Title Label -->
+                <text x="550" y="755" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="800" font-size="22" fill="#2d2a3e">Gambar 4 Automata Aplikasi</text>
+
+            </svg>
+        </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend-container">
+        <div class="legend-title">Keterangan Transisi</div>
+        <div class="legend-items">
+            <div class="legend-item">
+                <div class="legend-line black"></div>
+                <span>: Forward to Next using clickable button</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line red"></div>
+                <span>: Backward to Previous using back button</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line blue"></div>
+                <span>: Backward to Previous using navigation button</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Panel -->
+    <div class="info-panel" id="info-panel">
+        <div class="info-title">📋 Detail State</div>
+        <div class="default-info" id="default-info">
+            Klik pada node (lingkaran hijau) untuk melihat detail state dan transisi-transisinya.
+        </div>
+
+        <div class="state-info" id="info-start" data-info="start">
+            <h3>🟢 Start</h3>
+            <p>State awal (initial state) saat aplikasi pertama kali dibuka. Ini adalah titik masuk automata.</p>
+            <div class="transitions">
+                <strong>Transisi keluar:</strong><br>
+                <span>→ Splash Screen (otomatis / forward)</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-splash" data-info="splash">
+            <h3>📱 Splash Screen</h3>
+            <p>Layar pembuka yang menampilkan logo dan branding PROMATH GUI sebelum masuk ke halaman login.</p>
+            <div class="transitions">
+                <strong>Transisi keluar:</strong><br>
+                <span>→ Login Page (forward / otomatis setelah beberapa detik)</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-login" data-info="login">
+            <h3>🔐 Login Page</h3>
+            <p>Halaman login dimana pengguna memasukkan nama atau kredensial untuk mengakses aplikasi.</p>
+            <div class="transitions">
+                <strong>Transisi keluar:</strong><br>
+                <span>→ Main Menu (setelah berhasil login / klik tombol MULAI)</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-mainmenu" data-info="mainmenu">
+            <h3>🏠 Main Menu</h3>
+            <p>Menu utama yang menjadi hub navigasi ke semua fitur utama aplikasi. Dari sini pengguna dapat mengakses Beranda, Statistik, Ruang Diskusi, dan Akun.</p>
+            <div class="transitions">
+                <strong>Transisi keluar:</strong><br>
+                <span>→ Beranda (klik tombol)</span>
+                <span>→ Statistik (klik tombol)</span>
+                <span>→ Ruang Diskusi (klik tombol)</span>
+                <span>→ Akun (klik tombol)</span>
+            </div>
+            <div class="transitions" style="margin-top:8px;">
+                <strong style="color:#4299e1;">Transisi masuk (dari navigation):</strong><br>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Beranda</span>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Statistik</span>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Ruang Diskusi</span>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Akun</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-beranda" data-info="beranda">
+            <h3>🏡 Beranda</h3>
+            <p>Halaman beranda yang menampilkan konten utama. Dari sini pengguna dapat mengakses sub-halaman: Materi, Soal, Asesmen, dan Report Belajar.</p>
+            <div class="transitions">
+                <strong>Transisi keluar (forward):</strong><br>
+                <span>→ Materi (klik tombol)</span>
+                <span>→ Soal (klik tombol)</span>
+                <span>→ Asesmen (klik tombol)</span>
+                <span>→ Report Belajar (klik tombol)</span>
+            </div>
+            <div class="transitions" style="margin-top:8px;">
+                <strong style="color:#4299e1;">Transisi keluar (navigation):</strong><br>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Main Menu</span>
+            </div>
+            <div class="transitions" style="margin-top:8px;">
+                <strong style="color:#e53e3e;">Transisi masuk (back button):</strong><br>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Materi</span>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Soal</span>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Asesmen</span>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Report Belajar</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-statistik" data-info="statistik">
+            <h3>📊 Statistik</h3>
+            <p>Halaman yang menampilkan data statistik pembelajaran dan progress pengguna.</p>
+            <div class="transitions">
+                <strong style="color:#4299e1;">Transisi keluar (navigation):</strong><br>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Main Menu</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-diskusi" data-info="diskusi">
+            <h3>💬 Ruang Diskusi</h3>
+            <p>Halaman forum diskusi dimana pengguna dapat berdiskusi tentang materi pembelajaran dengan pengguna lain.</p>
+            <div class="transitions">
+                <strong style="color:#4299e1;">Transisi keluar (navigation):</strong><br>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Main Menu</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-akun" data-info="akun">
+            <h3>👤 Akun</h3>
+            <p>Halaman pengaturan akun pengguna, termasuk profil, pengaturan, dan preferensi.</p>
+            <div class="transitions">
+                <strong style="color:#4299e1;">Transisi keluar (navigation):</strong><br>
+                <span style="border-color:#4299e1;color:#4299e1;background:rgba(66,153,225,0.1)">← Main Menu</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-materi" data-info="materi">
+            <h3>📚 Materi</h3>
+            <p>Halaman konten materi pembelajaran tentang batik dan matematika. Sub-halaman dari Beranda.</p>
+            <div class="transitions">
+                <strong style="color:#e53e3e;">Transisi keluar (back button):</strong><br>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Beranda</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-soal" data-info="soal">
+            <h3>📝 Soal</h3>
+            <p>Halaman kumpulan soal latihan untuk menguji pemahaman materi. Sub-halaman dari Beranda.</p>
+            <div class="transitions">
+                <strong style="color:#e53e3e;">Transisi keluar (back button):</strong><br>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Beranda</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-asesmen" data-info="asesmen">
+            <h3>📋 Asesmen</h3>
+            <p>Halaman asesmen/ujian untuk mengukur kemampuan pengguna secara formal. Sub-halaman dari Beranda.</p>
+            <div class="transitions">
+                <strong style="color:#e53e3e;">Transisi keluar (back button):</strong><br>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Beranda</span>
+            </div>
+        </div>
+
+        <div class="state-info" id="info-report" data-info="report">
+            <h3>📈 Report Belajar</h3>
+            <p>Halaman laporan hasil belajar yang menampilkan ringkasan skor, progres, dan pencapaian pengguna. Sub-halaman dari Beranda.</p>
+            <div class="transitions">
+                <strong style="color:#e53e3e;">Transisi keluar (back button):</strong><br>
+                <span style="border-color:#e53e3e;color:#e53e3e;background:rgba(229,62,62,0.1)">← Beranda</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stateNodes = document.querySelectorAll('.state-node');
+            const tooltip = document.getElementById('tooltip');
+            const defaultInfo = document.getElementById('default-info');
+            const stateInfos = document.querySelectorAll('.state-info');
+            let activeState = null;
+
+            // State names for tooltip
+            const stateNames = {
+                'start': 'Start (State Awal)',
+                'splash': 'Splash Screen',
+                'login': 'Login Page',
+                'mainmenu': 'Main Menu',
+                'beranda': 'Beranda',
+                'statistik': 'Statistik',
+                'diskusi': 'Ruang Diskusi',
+                'akun': 'Akun',
+                'materi': 'Materi',
+                'soal': 'Soal',
+                'asesmen': 'Asesmen',
+                'report': 'Report Belajar'
+            };
+
+            // Click handler for nodes
+            stateNodes.forEach(node => {
+                const stateName = node.getAttribute('data-state');
+
+                // Click to select
+                node.addEventListener('click', () => {
+                    // Remove previous active
+                    stateNodes.forEach(n => n.classList.remove('active-state'));
+                    // Set new active
+                    node.classList.add('active-state');
+                    activeState = stateName;
+
+                    // Show corresponding info
+                    defaultInfo.style.display = 'none';
+                    stateInfos.forEach(info => {
+                        if (info.getAttribute('data-info') === stateName) {
+                            info.classList.add('active');
+                        } else {
+                            info.classList.remove('active');
+                        }
+                    });
+
+                    // Scroll to info panel
+                    document.getElementById('info-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+
+                // Hover tooltip
+                node.addEventListener('mouseenter', (e) => {
+                    tooltip.textContent = stateNames[stateName] || stateName;
+                    tooltip.classList.add('visible');
+                });
+
+                node.addEventListener('mousemove', (e) => {
+                    tooltip.style.left = (e.clientX + 14) + 'px';
+                    tooltip.style.top = (e.clientY - 36) + 'px';
+                });
+
+                node.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                });
+            });
+
+            // Animate transitions on load
+            const lines = document.querySelectorAll('line[stroke="#2d2a3e"], path[stroke="#2d2a3e"]');
+            const redPaths = document.querySelectorAll('path[stroke="#e53e3e"]');
+            const bluePaths = document.querySelectorAll('path[stroke="#4299e1"]');
+
+            // Animate black lines
+            lines.forEach((line, i) => {
+                if (line.tagName === 'path') {
+                    const length = line.getTotalLength();
+                    line.style.strokeDasharray = length;
+                    line.style.strokeDashoffset = length;
+                    line.style.transition = `stroke-dashoffset 0.6s ease ${i * 0.15}s`;
+                    requestAnimationFrame(() => { line.style.strokeDashoffset = '0'; });
+                }
+            });
+
+            // Animate red paths
+            redPaths.forEach((path, i) => {
+                const length = path.getTotalLength();
+                path.style.strokeDasharray = length;
+                path.style.strokeDashoffset = length;
+                path.style.transition = `stroke-dashoffset 0.8s ease ${1.5 + i * 0.2}s`;
+                requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
+            });
+
+            // Animate blue paths
+            bluePaths.forEach((path, i) => {
+                const length = path.getTotalLength();
+                path.style.strokeDasharray = length;
+                path.style.strokeDashoffset = length;
+                path.style.transition = `stroke-dashoffset 0.8s ease ${2.5 + i * 0.2}s`;
+                requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
+            });
+
+            // Animate nodes appearing
+            stateNodes.forEach((node, i) => {
+                node.style.opacity = '0';
+                node.style.transform += ' scale(0.5)';
+                node.style.transition = `opacity 0.4s ease ${i * 0.1}s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.1}s`;
+                requestAnimationFrame(() => {
+                    node.style.opacity = '1';
+                    // Reset scale but keep translate
+                    const currentTransform = node.getAttribute('transform') || '';
+                    node.style.transform = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
