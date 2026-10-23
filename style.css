@@ -634,6 +634,8 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     font-size: 0.88rem;
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .formula-label {
@@ -649,6 +651,8 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     background: rgba(128, 119, 193, 0.1);
     padding: 1px 5px;
     border-radius: 4px;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 /* Notasi vektor kolom translasi: (a di atas, b di bawah) */
