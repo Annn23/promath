@@ -681,6 +681,14 @@ button { cursor:pointer; border:none; outline:none; font-family:inherit; }
     padding: 0 2px;
 }
 
+.vektor-bracket {
+    font-size: 2em;
+    line-height: 1;
+    font-weight: 300;
+    color: var(--text-dark);
+    align-self: center;
+}
+
 .formula-list {
     margin: 6px 0 0 0;
     padding-left: 18px;
